@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class GitliRecyclerView extends RecyclerView.Adapter<GitliViewHolder> {
+public class GitliRecyclerAdapter extends RecyclerView.Adapter<GitliViewHolder> {
 
     private final Context mContext;
     private int mItemSize;
@@ -19,7 +19,7 @@ public class GitliRecyclerView extends RecyclerView.Adapter<GitliViewHolder> {
         this.onBackViewHolder = onBackViewHolder;
     }
 
-    public GitliRecyclerView(Context context, int resourceId, int itemSize){
+    public GitliRecyclerAdapter(Context context, int resourceId, int itemSize){
         mContext=context;
         mResourceId=resourceId;
         mItemSize=itemSize;
