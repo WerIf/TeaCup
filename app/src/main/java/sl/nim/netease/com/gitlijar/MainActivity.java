@@ -11,10 +11,11 @@ import com.lily.gitlijar.annotation.autoknife.OnClick;
 import com.lily.gitlijar.annotation.autowired.AutoWriedProcess;
 import com.lily.gitlijar.toast.ToastUtils;
 
+import sl.nim.netease.com.gitlijar.details.CardViewActivity;
+import sl.nim.netease.com.gitlijar.details.ToolBarActivity;
+
 public class MainActivity extends AppCompatActivity {
 
-    @FindView(R.id.btn)
-    Button btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +26,21 @@ public class MainActivity extends AppCompatActivity {
         FindKnifeProcess.bind(this);
         AutoWriedProcess.bind(this);
 
-        btn.setText("click this");
+//        btn.setText("click this");
     }
 
-    @OnClick({R.id.btn})
+    @OnClick({R.id.toolBar,R.id.cardView})
     public void onClick(View view){
-        ToastUtils.makeText(this,"hello world",ToastUtils.LENGTH_SHORT).show();
+       switch (view.getId()){
+           case R.id.toolBar:
+               ToolBarActivity.start(this);
+               break;
+           case R.id.cardView:
+               CardViewActivity.start(this);
+               break;
+               default:
+                   ToastUtils.makeText(this,"hello world",ToastUtils.LENGTH_SHORT).show();
+               break;
+       }
     }
 }

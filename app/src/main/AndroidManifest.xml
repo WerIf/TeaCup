@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".details.ToolBarActivity"
+            android:theme="@style/BaseTheme" />
+        <activity android:name=".details.CardViewActivity"></activity>
     </application>
 
 </manifest>

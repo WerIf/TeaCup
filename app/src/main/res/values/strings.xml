@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">GitLiJar</string>
+    <string name="title">My Title</string>
+    <string name="subtitle">My Subtitle</string>
+    <string name="action_delete">删除</string>
+    <string name="action_share">分享</string>
+    <string name="action_qr">扫一扫</string>
 </resources>

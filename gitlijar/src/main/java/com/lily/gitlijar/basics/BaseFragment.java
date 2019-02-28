@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.lily.gitlijar.annotation.autoknife.FindKnifeProcess;
+import com.lily.gitlijar.annotation.autowired.AutoWriedProcess;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -15,13 +18,13 @@ public abstract class BaseFragment extends Fragment {
 
     public static final String TAG=BaseFragment.class.getSimpleName();
     private View mRootView;
-    private Unbinder mUnbinder;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRootView=inflater.inflate(getLayoutResId(),container,false);
-        mUnbinder=ButterKnife.bind(this,mRootView);
+        FindKnifeProcess.bind(this,mRootView);
+        AutoWriedProcess.bind(this);
         init(savedInstanceState);
         return mRootView;
     }
@@ -32,9 +35,4 @@ public abstract class BaseFragment extends Fragment {
 
 
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mUnbinder.unbind();
-    }
 }
