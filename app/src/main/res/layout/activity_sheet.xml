@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/cl_root"
+    tools:context=".details.SheetActivity">
+
+    <include layout="@layout/layout_sheet"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/jietelan"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/icon_t"
+        app:borderWidth="4dp"
+        app:elevation="8dp"
+        app:fabSize="normal"
+        app:pressedTranslationZ="16dp"
+        app:rippleColor="@color/yase"/>
+
+</android.support.design.widget.CoordinatorLayout>

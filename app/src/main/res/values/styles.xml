@@ -9,9 +9,25 @@
     </style>
 
     <style name="BaseTheme" parent="AppTheme">
-    <item name="windowActionBar">false</item>
-    <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
+    <style name="TranslucentTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <!--Android 5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色-->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="TVTestCenter">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:text">Test-测试文字</item>
+        <item name="android:background">#6096F3</item>
+        <item name="android:textColor">#fff</item>
     </style>
 
 </resources>

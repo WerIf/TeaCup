@@ -28,4 +28,9 @@ public class CardViewActivity extends BaseActivity {
     public void init(Bundle savedInstanceState) {
 
     }
+
+    @Override
+    public void beforeOnCreate() {
+
+    }
 }

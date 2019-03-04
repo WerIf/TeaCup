@@ -19,7 +19,13 @@
         <activity
             android:name=".details.ToolBarActivity"
             android:theme="@style/BaseTheme" />
-        <activity android:name=".details.CardViewActivity"></activity>
+        <activity
+            android:name=".details.CardViewActivity"
+            android:theme="@style/BaseTheme" />
+        <activity
+            android:name=".details.CoordLayoutActivity"
+            android:theme="@style/TranslucentTheme" />
+        <activity android:name=".details.SheetActivity"></activity>
     </application>
 
 </manifest>

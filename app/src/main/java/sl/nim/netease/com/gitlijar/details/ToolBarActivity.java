@@ -41,6 +41,11 @@ public class ToolBarActivity extends BaseActivity implements View.OnClickListene
     }
 
     @Override
+    public void beforeOnCreate() {
+
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater=getMenuInflater();
         menuInflater.inflate(R.menu.menu_bar,menu);
