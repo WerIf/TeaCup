@@ -10,6 +10,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        buildConfigField("String","SERVICE_URL","\"http://123.206.24.66:8888/skkx/Login/userLogin\"")
         compileOptions {
             //处理 Invoke-customs are only supported starting with Android O (--min-api 26)  问题
             sourceCompatibility JavaVersion.VERSION_1_8
@@ -20,6 +21,8 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+
         }
     }
 }
