@@ -8,8 +8,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.lily.gitlijar.ImageUtils.ImageLoadUtils;
 import com.lily.gitlijar.annotation.autoknife.FindKnifeProcess;
+import com.lily.gitlijar.annotation.autoknife.FindView;
 import com.lily.gitlijar.annotation.autoknife.OnClick;
 import com.lily.gitlijar.annotation.autowired.AutoWriedProcess;
 import com.lily.gitlijar.network.HttpRequest;
@@ -38,6 +42,12 @@ private Handler handler=new Handler(){
 
     }
 };
+
+    @FindView(R.id.loading_one)
+    ImageView loading_one;
+
+    @FindView(R.id.loading_two)
+    ImageView loading_two;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +60,16 @@ private Handler handler=new Handler(){
 //        btn.setText("click this");
 
 //        CoordLayoutActivity.start(this);
+
+//        Glide.with(this)
+//                .load(R.drawable.gif_loading_1)
+//                .into(loading_one);
+//        Glide.with(this)
+//                .load(R.drawable.gif_loading_2)
+//                .into(loading_two);
+
+
+        ImageLoadUtils.getInstance().ImageTaskDownLoad(loading_one);
     }
 
     @OnClick({R.id.toolBar,R.id.cardView,R.id.coordinator,R.id.sheet,R.id.network_urlconnection,R.id.network_httpurlconnection})

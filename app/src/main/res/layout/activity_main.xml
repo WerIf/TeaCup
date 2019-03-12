@@ -66,4 +66,18 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/loading_one"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="@dimen/dp_70"
+        android:layout_height="@dimen/dp_70" />
+
+    <ImageView
+        android:id="@+id/loading_two"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="@dimen/dp_70"
+        android:layout_height="@dimen/dp_70" />
 </LinearLayout>

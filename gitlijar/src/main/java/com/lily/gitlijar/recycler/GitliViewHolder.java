@@ -7,14 +7,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.lily.gitlijar.ImageUtils.ImgUtilLoadImage;
-import com.lily.gitlijar.ImageUtils.ImgUtilLoadInterface;
+import com.lily.gitlijar.ImageUtils.ImageLoadInterface;
+import com.lily.gitlijar.ImageUtils.ImageLoadUtils;
 import com.lily.gitlijar.ImageUtils.ImgUtilsType;
 
 public class GitliViewHolder extends RecyclerView.ViewHolder {
     private final View mItemView;
     public TextView mIndexView;
-    private ImgUtilLoadInterface utilLoadImage;
+    private ImageLoadInterface utilLoadImage;
 
     public GitliViewHolder(@NonNull View itemView){
         super(itemView);
@@ -41,29 +41,29 @@ public class GitliViewHolder extends RecyclerView.ViewHolder {
         ImageView mImageView = mItemView.findViewById(resourceId);
 
         if (utilLoadImage==null){
-            utilLoadImage=new ImgUtilLoadImage();
+            utilLoadImage=ImageLoadUtils.getInstance();
         }
 
-        utilLoadImage.ImageLoadImage(mContext,mImageView,url);
+        utilLoadImage.ImageLoad(mContext,mImageView,url);
     }
 
     public void setImageToView(Context mContext, int resourceId, String url, int errorOrPlacePath, ImgUtilsType type) {
         ImageView mImageView = mItemView.findViewById(resourceId);
 
         if (utilLoadImage==null){
-            utilLoadImage=new ImgUtilLoadImage();
+            utilLoadImage=ImageLoadUtils.getInstance();
         }
 
-        utilLoadImage.ImageLoadImage(mContext,mImageView,url,errorOrPlacePath,type);
+        utilLoadImage.ImageLoad(mContext,mImageView,url,errorOrPlacePath,type);
     }
 
     public void setImageToView(Context mContext, int resourceId, String url,int errorPath,int placePath) {
         ImageView mImageView = mItemView.findViewById(resourceId);
 
         if (utilLoadImage==null){
-            utilLoadImage=new ImgUtilLoadImage();
+            utilLoadImage=ImageLoadUtils.getInstance();
         }
 
-        utilLoadImage.ImageLoadImage(mContext,mImageView,url,errorPath,placePath);
+        utilLoadImage.ImageLoad(mContext,mImageView,url,errorPath,placePath);
     }
 }
