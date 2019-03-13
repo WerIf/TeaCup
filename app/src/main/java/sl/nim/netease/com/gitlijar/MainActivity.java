@@ -1,25 +1,20 @@
 package sl.nim.netease.com.gitlijar;
 
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
-import com.lily.gitlijar.ImageUtils.ImageLoadUtils;
+import com.lily.gitlijar.ImageUtils.load.ImageLoadUtils;
 import com.lily.gitlijar.annotation.autoknife.FindKnifeProcess;
 import com.lily.gitlijar.annotation.autoknife.FindView;
 import com.lily.gitlijar.annotation.autoknife.OnClick;
 import com.lily.gitlijar.annotation.autowired.AutoWriedProcess;
-import com.lily.gitlijar.network.HttpRequest;
 import com.lily.gitlijar.toast.ToastUtils;
 
-import java.net.HttpURLConnection;
 import java.util.HashMap;
 import java.util.Map;
 

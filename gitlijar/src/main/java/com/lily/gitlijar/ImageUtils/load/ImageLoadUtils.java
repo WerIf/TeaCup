@@ -1,24 +1,21 @@
-package com.lily.gitlijar.ImageUtils;
+package com.lily.gitlijar.ImageUtils.load;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.VolumeShaper;
 import android.os.AsyncTask;
 import android.util.LruCache;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.lily.gitlijar.ImageUtils.ImgUtilsType;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.concurrent.Callable;
-import java.util.concurrent.FutureTask;
 
 public class ImageLoadUtils implements ImageLoadInterface {
 

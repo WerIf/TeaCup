@@ -1,8 +1,10 @@
-package com.lily.gitlijar.ImageUtils;
+package com.lily.gitlijar.ImageUtils.load;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
+
+import com.lily.gitlijar.ImageUtils.ImgUtilsType;
 
 public interface ImageLoadInterface {
 

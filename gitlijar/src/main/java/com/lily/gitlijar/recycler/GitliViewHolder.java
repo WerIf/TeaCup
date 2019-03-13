@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.lily.gitlijar.ImageUtils.ImageLoadInterface;
-import com.lily.gitlijar.ImageUtils.ImageLoadUtils;
+import com.lily.gitlijar.ImageUtils.load.ImageLoadInterface;
+import com.lily.gitlijar.ImageUtils.load.ImageLoadUtils;
 import com.lily.gitlijar.ImageUtils.ImgUtilsType;
 
 public class GitliViewHolder extends RecyclerView.ViewHolder {
