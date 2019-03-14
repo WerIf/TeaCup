@@ -8,7 +8,7 @@ import android.graphics.BitmapFactory;
  *      图片大小直接压缩到原来的一半，但是长度和宽度没有变，相比ARGB_8888减少了一般的内存
  *      注意：由于ARGB_4444的画质惨不忍睹，一般假如对图片没有透明度要求的话，可以盖层RGB_565
  */
-public class RGB_565Compress implements ImageCompressInterface {
+public class RGB_565Compress extends CompressBasics implements ImageCompressInterface {
     /**
      * @param params
      *      第一个参数为图片加载路径 String

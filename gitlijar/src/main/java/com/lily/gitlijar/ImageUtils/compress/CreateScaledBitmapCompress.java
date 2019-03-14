@@ -10,7 +10,7 @@ import com.lily.gitlijar.ImageUtils.CompressStandard;
  *      将图片压缩成用户所期望的的长度和宽度,如果用户期望的的长度和宽度和原图长度宽度相差太
  *      多的话,图片会很不清晰
  */
-public class CreateScaledBitmapCompress implements ImageCompressInterface {
+public class CreateScaledBitmapCompress extends CompressBasics implements ImageCompressInterface {
     @Override
     public Bitmap compressBitmap(Object... params) {
 

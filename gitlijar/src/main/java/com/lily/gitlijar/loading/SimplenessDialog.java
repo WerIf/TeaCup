@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import sl.nim.netease.com.gitlijar2.R;
 
-public class SimplenessDialog{
+public class SimplenessDialog {
 
     /**
      *      创建并显示dialog
@@ -30,7 +30,7 @@ public class SimplenessDialog{
        //填充数据
        tipTextView.setText(hintText);
 
-       Dialog simpleDialog=new Dialog(context,R.style.DialogStyle);
+       Dialog simpleDialog=new Dialog(context,R.style.LoadingDialog);
        simpleDialog.setCanceledOnTouchOutside(false);
        simpleDialog.setContentView(layout,new LinearLayout.LayoutParams(
                LinearLayout.LayoutParams.MATCH_PARENT,

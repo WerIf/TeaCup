@@ -67,6 +67,36 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <Button
+        android:id="@+id/jdk_lambda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="jdk_lambda"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/send_evenBus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="evenbus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/show_evenBus"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:gravity="center"
+        android:textSize="@dimen/sp_17"
+       />
+
     <ImageView
         android:id="@+id/loading_one"
         android:layout_marginTop="@dimen/dp_10"

@@ -18,7 +18,7 @@ import java.io.ByteArrayOutputStream;
  *      multiple 倍率
  *      quality  质量
  */
-public class QualityCompress implements ImageCompressInterface {
+public class QualityCompress extends CompressBasics implements ImageCompressInterface {
 
 
     /**

@@ -10,7 +10,7 @@ import android.graphics.BitmapFactory;
  *
  *      Sampling Frequency  采样率
  */
-public class SamplingFrequencyCompress implements ImageCompressInterface {
+public class SamplingFrequencyCompress extends CompressBasics implements ImageCompressInterface {
 
 
     /**
