@@ -12,9 +12,21 @@ buildscript {
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        //GreenDao3依赖
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
     }
 }
 
+ext{
+    applicationId='sl.nim.netease.com.gitlijar'
+    compileSdkVersion=28
+    targetSdkVersion=28
+    minSdkVersion=17
+    versionCode=1
+    versionName='1.0.0'
+    sdkSourceCompatibility = 1.8
+    sdkTargetCompatibility = 1.8
+}
 allprojects {
     repositories {
         google()

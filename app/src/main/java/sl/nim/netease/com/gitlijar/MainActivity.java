@@ -30,6 +30,7 @@ import sl.nim.netease.com.gitlijar.been.MessageEvent;
 import sl.nim.netease.com.gitlijar.details.CardViewActivity;
 import sl.nim.netease.com.gitlijar.details.CoordLayoutActivity;
 import sl.nim.netease.com.gitlijar.details.SheetActivity;
+import sl.nim.netease.com.gitlijar.details.SqliteActivity;
 import sl.nim.netease.com.gitlijar.details.ToolBarActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         evenBus.setOnClickListener(view -> EventBus.getDefault().post(new MessageEvent("gitly", "15")));
     }
 
-    @OnClick({R.id.toolBar, R.id.cardView, R.id.coordinator, R.id.sheet, R.id.network_urlconnection, R.id.network_httpurlconnection})
+    @OnClick({R.id.toolBar, R.id.cardView, R.id.coordinator, R.id.sheet, R.id.network_urlconnection, R.id.network_httpurlconnection,R.id.show_evenBus})
     public void onClick(View view) {
 
         Map<String, String> params = initMap();
@@ -151,6 +152,9 @@ public class MainActivity extends AppCompatActivity {
 //                       handler.sendMessage(message);
 //                   }
 //               }).start();
+                break;
+            case R.id.greeDao:
+                SqliteActivity.start(this);
                 break;
 //               default:
 //                   ToastUtils.makeText(this,"hello world",ToastUtils.LENGTH_SHORT).show();

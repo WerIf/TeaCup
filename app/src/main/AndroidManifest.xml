@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="sl.nim.netease.com.gitlijar">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -27,7 +27,8 @@
         <activity
             android:name=".details.CoordLayoutActivity"
             android:theme="@style/TranslucentTheme" />
-        <activity android:name=".details.SheetActivity"></activity>
+        <activity android:name=".details.SheetActivity" />
+        <activity android:name=".details.SqliteActivity"></activity>
     </application>
 
 </manifest>

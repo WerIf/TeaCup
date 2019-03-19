@@ -11,8 +11,7 @@ import android.view.ViewGroup;
 import com.lily.gitlijar.annotation.autoknife.FindKnifeProcess;
 import com.lily.gitlijar.annotation.autowired.AutoWriedProcess;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
+
 
 public abstract class BaseFragment extends Fragment {
 

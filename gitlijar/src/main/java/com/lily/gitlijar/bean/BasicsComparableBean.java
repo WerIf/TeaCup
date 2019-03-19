@@ -1,13 +1,13 @@
-package com.lily.gitlijar.been;
+package com.lily.gitlijar.bean;
 
 import com.lily.gitlijar.pinyin.PinYinUtil;
 
-public class BasicsBean implements Comparable<BasicsBean> {
+public class BasicsComparableBean implements Comparable<BasicsComparableBean> {
 
 
     private String comparableStr;
 
-    public BasicsBean(String mTransition){
+    public BasicsComparableBean(String mTransition){
         setComparableStr(PinYinUtil.getPinYin(mTransition));
     }
 
@@ -20,7 +20,7 @@ public class BasicsBean implements Comparable<BasicsBean> {
     }
 
     @Override
-    public int compareTo(BasicsBean basicsBean) {
+    public int compareTo(BasicsComparableBean basicsBean) {
         return this.getComparableStr().compareTo(basicsBean.getComparableStr());
     }
 }

@@ -89,6 +89,16 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/greeDao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="greeDao"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/show_evenBus"
         android:layout_width="match_parent"
@@ -99,6 +109,7 @@
 
     <ImageView
         android:id="@+id/loading_one"
+        android:visibility="gone"
         android:layout_marginTop="@dimen/dp_10"
         android:layout_gravity="center_horizontal"
         android:layout_width="@dimen/dp_70"
@@ -106,6 +117,7 @@
 
     <ImageView
         android:id="@+id/loading_two"
+        android:visibility="gone"
         android:layout_marginTop="@dimen/dp_30"
         android:layout_gravity="center_horizontal"
         android:layout_width="@dimen/dp_70"

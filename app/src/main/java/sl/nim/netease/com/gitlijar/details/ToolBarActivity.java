@@ -30,12 +30,12 @@ public class ToolBarActivity extends BaseActivity implements View.OnClickListene
     @Override
     public void init(Bundle savedInstanceState) {
 
-        toolbar.setLogo(R.mipmap.icon);
-        toolbar.setTitle(R.string.title);
-        toolbar.setSubtitle(R.string.subtitle);
-
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.mipmap.back);
+//        toolbar.setLogo(R.mipmap.icon);
+//        toolbar.setTitle(R.string.title);
+//        toolbar.setSubtitle(R.string.subtitle);
+//
+//        setSupportActionBar(toolbar);
+//        toolbar.setNavigationIcon(R.mipmap.back);
 
         toolbar.setNavigationOnClickListener(this);
     }

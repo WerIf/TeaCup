@@ -1,16 +1,20 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+
+def appName = "GitLiJar"
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
     defaultConfig {
-        applicationId "sl.nim.netease.com.gitlijar"
-        minSdkVersion 17
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        applicationId rootProject.ext.applicationId
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String","SERVICE_URL","\"http://123.206.24.66:8888/skkx/Login/userLogin\"")
+        buildConfigField("String", "SERVICE_URL", "\"http://123.206.24.66:8888/skkx/Login/userLogin\"")
         compileOptions {
             //处理 Invoke-customs are only supported starting with Android O (--min-api 26)  问题
             sourceCompatibility JavaVersion.VERSION_1_8
@@ -22,13 +26,25 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
-
         }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                outputFileName = "${appName}-v${variant.versionName}.apk"
+            }
+    }
+}
+
+greendao {
+    schemaVersion 1 //数据库版本号
+    daoPackage 'sl.nim.netease.com.gitlijar.db'// 设置DaoMaster、DaoSession、Dao 包名
+    targetGenDir 'src/main/java'//设置DaoMaster、DaoSession、Dao目录
 }
 
 dependencies {
@@ -44,4 +60,6 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
     implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'org.greenrobot:greendao:3.2.0'
+
 }

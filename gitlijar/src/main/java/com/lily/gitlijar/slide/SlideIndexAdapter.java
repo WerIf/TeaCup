@@ -7,13 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.lily.gitlijar.been.BasicsBean;
+import com.lily.gitlijar.bean.BasicsBean;
+import com.lily.gitlijar.bean.BasicsComparableBean;
 import com.lily.gitlijar.recycler.GitliViewHolder;
 import com.lily.gitlijar.recycler.OnBackViewHolder;
 
 import java.util.List;
 
-public class SlideIndexAdapter<T extends BasicsBean> extends RecyclerView.Adapter<GitliViewHolder> {
+public class SlideIndexAdapter<T extends BasicsComparableBean> extends RecyclerView.Adapter<GitliViewHolder> {
     private final Context mContext;
     private final int mIndexViewId;
     private List<T> mItemSize;
