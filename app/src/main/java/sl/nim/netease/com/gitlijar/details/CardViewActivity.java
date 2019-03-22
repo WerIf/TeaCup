@@ -2,10 +2,9 @@ package sl.nim.netease.com.gitlijar.details;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.lily.gitlijar.basics.BaseActivity;
+import com.july.teacup.basics.BaseActivity;
 
 import sl.nim.netease.com.gitlijar.R;
 

@@ -1,5 +1,7 @@
 package sl.nim.netease.com.gitlijar;
 
+import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -10,14 +12,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.lily.gitlijar.ImageUtils.load.ImageLoadUtils;
-import com.lily.gitlijar.annotation.autoknife.FindKnifeProcess;
-import com.lily.gitlijar.annotation.autoknife.FindView;
-import com.lily.gitlijar.annotation.autoknife.OnClick;
-import com.lily.gitlijar.annotation.autowired.AutoWriedProcess;
-import com.lily.gitlijar.dialog.GitLiDialog;
-import com.lily.gitlijar.dialog.details.HintDialog;
-import com.lily.gitlijar.toast.ToastUtils;
+import com.july.teacup.annotation.autoknife.FindKnifeProcess;
+import com.july.teacup.annotation.autoknife.FindView;
+import com.july.teacup.annotation.autoknife.OnClick;
+import com.july.teacup.annotation.autowired.AutoWriedProcess;
+import com.july.teacup.basics.BaseActivity;
+import com.july.teacup.basics.NetWorkCondition;
+import com.july.teacup.dialog.GitLiDialog;
+import com.july.teacup.dialog.details.HintDialog;
+import com.july.teacup.toast.ToastUtils;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -33,7 +36,8 @@ import sl.nim.netease.com.gitlijar.details.SheetActivity;
 import sl.nim.netease.com.gitlijar.details.SqliteActivity;
 import sl.nim.netease.com.gitlijar.details.ToolBarActivity;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends BaseActivity implements NetWorkCondition {
 
     private Handler handler = new Handler() {
         @Override
@@ -64,28 +68,32 @@ public class MainActivity extends AppCompatActivity {
     TextView showText;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void beforeOnCreate() {
 
-        setContentView(R.layout.activity_main);
+    }
 
-        FindKnifeProcess.bind(this);
-        AutoWriedProcess.bind(this);
 
-//        btn.setText("click this");
+    @Override
+    public int getContentViewResId() {
+        return R.layout.activity_main;
+    }
 
-//        CoordLayoutActivity.start(this);
-
-//        Glide.with(this)
-//                .load(R.drawable.gif_loading_1)
-//                .into(loading_one);
-//        Glide.with(this)
-//                .load(R.drawable.gif_loading_2)
-//                .into(loading_two);
-
+    @Override
+    public void init(Bundle savedInstanceState) {
         EventBus.getDefault().register(this);
 
-        ImageLoadUtils.getInstance().ImageTaskDownLoad(loading_one);
+//        ImageLoadUtils.getInstance().ImageTaskDownLoad(loading_one);
+
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                HttpAsyncImageLoadUtils http = HttpAsyncImageLoadUtils.getInstance();
+//                http.setWorkCondition(MainActivity.this);
+//                http.AsyncImageDownLoad("http://s7.sinaimg.cn/mw690/001m1Utdzy6ZLnVyRxQe6&690");
+//
+//
+//            }
+//        }).start();
 
 
         lambda.setOnClickListener(
@@ -106,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         evenBus.setOnClickListener(view -> EventBus.getDefault().post(new MessageEvent("gitly", "15")));
     }
 
-    @OnClick({R.id.toolBar, R.id.cardView, R.id.coordinator, R.id.sheet, R.id.network_urlconnection, R.id.network_httpurlconnection,R.id.show_evenBus})
+    @OnClick({R.id.toolBar, R.id.cardView, R.id.coordinator, R.id.sheet, R.id.network_urlconnection, R.id.network_httpurlconnection, R.id.show_evenBus, R.id.greeDao})
     public void onClick(View view) {
 
         Map<String, String> params = initMap();
@@ -128,30 +136,11 @@ public class MainActivity extends AppCompatActivity {
             case R.id.network_urlconnection:
 
                 Log.v("MainActivity", "get println result is:" + params.get("telephone") + "  password:" + params.get("password"));
-
-//              new Thread(new Runnable() {
-//                  @Override
-//                  public void run() {
-//                      String result=HttpRequest.JPostHttpUrlConnection(params,BuildConfig.SERVICE_URL);
-//                      Message message=new Message();
-//                      message.obj=result;
-//                      handler.sendMessage(message);
-//                  }
-//              }).start();
                 break;
             case R.id.network_httpurlconnection:
 
                 Log.v("MainActivity", "get println result is:" + params.get("telephone") + "  password:" + params.get("password"));
 
-//               new Thread(new Runnable() {
-//                   @Override
-//                   public void run() {
-//                       String result=HttpRequest.JPostHttpUrlConnection(params,BuildConfig.SERVICE_URL);
-//                       Message message=new Message();
-//                       message.obj=result;
-//                       handler.sendMessage(message);
-//                   }
-//               }).start();
                 break;
             case R.id.greeDao:
                 SqliteActivity.start(this);
@@ -174,10 +163,43 @@ public class MainActivity extends AppCompatActivity {
         ToastUtils.makeText(this, messageEvent.toString(), ToastUtils.LENGTH_SHORT).show();
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void MessageEventBus(Bitmap bitmap) {
+
+
+        loading_one.setImageBitmap(bitmap);
+    }
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void MessageEventBus(String string) {
+
+
+        Log.e("TAG", "println result is:" + string);
+    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
     }
+
+    @Override
+    public void onSucceed(Object object) {
+//        Log.e("TAG","println result is:"+(bitmap==null));
+        Bitmap bitmap = (Bitmap) object;
+        if (bitmap == null) return;
+        EventBus.getDefault().post(bitmap);
+    }
+
+    @Override
+    public void onFailed(Object object) {
+        EventBus.getDefault().post("failed:" + (int) object);
+    }
+
+    @Override
+    public void onError(Object object) {
+        EventBus.getDefault().post("error:" + (String) object);
+    }
+
 }

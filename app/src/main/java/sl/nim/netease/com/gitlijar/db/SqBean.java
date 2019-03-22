@@ -6,13 +6,13 @@ import org.greenrobot.greendao.annotation.Id;
 
 @Entity
 public class SqBean {
-    @Id
-    private String uid;
+    @Id(autoincrement = true)
+    private Long uid;
     private String name;
     private String path;
 
-    @Generated(hash = 48158341)
-    public SqBean(String uid, String name, String path) {
+    @Generated(hash = 2081679170)
+    public SqBean(Long uid, String name, String path) {
         this.uid = uid;
         this.name = name;
         this.path = path;
@@ -22,11 +22,11 @@ public class SqBean {
     public SqBean() {
     }
 
-    public String getUid() {
+    public Long getUid() {
         return uid;
     }
 
-    public void setUid(String uid) {
+    public void setUid(Long uid) {
         this.uid = uid;
     }
 

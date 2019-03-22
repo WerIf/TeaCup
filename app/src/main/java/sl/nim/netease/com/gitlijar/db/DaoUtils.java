@@ -6,6 +6,11 @@ import sl.nim.netease.com.gitlijar.BaseApplication;
 
 public class DaoUtils {
 
+    private final DaoSession daoSession;
+
+    public DaoUtils(BaseApplication application) {
+        daoSession =application.getDaoInstant();
+    }
 
     /**
      * 添加数据 如果有重复的则覆盖
@@ -13,16 +18,17 @@ public class DaoUtils {
      * @param sqBean
      */
     public void insertObject(SqBean sqBean) {
-        BaseApplication.getDaoInstant().getSqBeanDao().insert(sqBean);
+        daoSession.getSqBeanDao().insertOrReplace(sqBean);
     }
+    
 
 
     /**
      *      通过键删除
      * @param key
      */
-    public void deleteObjectFromId(String key) {
-        BaseApplication.getDaoInstant().getSqBeanDao().deleteByKey(key);
+    public void deleteObjectFromId(long key) {
+        daoSession.getSqBeanDao().deleteByKey(key);
 
     }
 
@@ -31,7 +37,7 @@ public class DaoUtils {
      * @param sqBean
      */
     public void deleteObjectFormOb(SqBean sqBean) {
-        BaseApplication.getDaoInstant().getSqBeanDao().delete(sqBean);
+        daoSession.getSqBeanDao().delete(sqBean);
     }
 
     /**
@@ -39,7 +45,7 @@ public class DaoUtils {
      * @return
      */
     public List<SqBean> queryObjectAll(){
-        return BaseApplication.getDaoInstant().getSqBeanDao().loadAll();
+        return daoSession.getSqBeanDao().loadAll();
     }
 
     /**
@@ -47,11 +53,11 @@ public class DaoUtils {
      * @param key
      * @return
      */
-    public SqBean queryObjectFormId(String key){
-        return BaseApplication.getDaoInstant().getSqBeanDao().load(key);
+    public SqBean queryObjectFormId(long key){
+        return daoSession.getSqBeanDao().load(key);
     }
 
     public List<SqBean> queryObjectFormCondition(String where,String selectionArg){
-        return BaseApplication.getDaoInstant().getSqBeanDao().queryRaw(where,selectionArg);
+        return daoSession.getSqBeanDao().queryRaw(where,selectionArg);
     }
 }

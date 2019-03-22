@@ -8,14 +8,14 @@
     tools:context=".MainActivity">
 
     <Button
-    android:id="@+id/toolBar"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="toolbar"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/cardView"
@@ -105,21 +105,26 @@
         android:layout_height="@dimen/dp_50"
         android:gravity="center"
         android:textSize="@dimen/sp_17"
-       />
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/loading_one"
-        android:visibility="gone"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_gravity="center_horizontal"
         android:layout_width="@dimen/dp_70"
-        android:layout_height="@dimen/dp_70" />
+        android:layout_height="@dimen/dp_70"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_10"
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/loading_two"
-        android:visibility="gone"
-        android:layout_marginTop="@dimen/dp_30"
-        android:layout_gravity="center_horizontal"
         android:layout_width="@dimen/dp_70"
-        android:layout_height="@dimen/dp_70" />
+        android:layout_height="@dimen/dp_70"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_30"
+        android:visibility="gone" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="对于字体样式，当android字体默认或者是设置上方的样式时候，当我修改手机系统字体样式的时候，app内的文字样式会跟随着手机系统字体样式一起改变。" />
 </LinearLayout>

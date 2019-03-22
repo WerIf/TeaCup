@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp_110"
+    android:layout_height="@dimen/dp_110">
+<ImageView
+    android:id="@+id/item_img"
+    android:layout_width="@dimen/dp_110"
+    android:layout_height="@dimen/dp_110" />
+</android.support.constraint.ConstraintLayout>

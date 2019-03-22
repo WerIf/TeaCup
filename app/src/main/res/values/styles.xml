@@ -8,6 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimaryDark">#333237</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorAccent">@color/app_theme</item>
+    </style>
+
     <style name="BaseTheme" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -29,5 +37,6 @@
         <item name="android:background">#6096F3</item>
         <item name="android:textColor">#fff</item>
     </style>
+
 
 </resources>

@@ -8,8 +8,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 
-import com.lily.gitlijar.annotation.autoknife.FindView;
-import com.lily.gitlijar.basics.BaseActivity;
+import com.july.teacup.annotation.autoknife.FindView;
+import com.july.teacup.basics.BaseActivity;
 
 import sl.nim.netease.com.gitlijar.R;
 

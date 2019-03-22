@@ -6,15 +6,14 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.lily.gitlijar.annotation.autoknife.FindView;
-import com.lily.gitlijar.annotation.autoknife.OnClick;
-import com.lily.gitlijar.basics.BaseActivity;
-import com.lily.gitlijar.toast.ToastUtils;
+import com.july.teacup.annotation.autoknife.FindView;
+import com.july.teacup.annotation.autoknife.OnClick;
+import com.july.teacup.basics.BaseActivity;
+import com.july.teacup.toast.ToastUtils;
 
 import sl.nim.netease.com.gitlijar.R;
 

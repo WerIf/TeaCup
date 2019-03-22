@@ -1,1 +1,1 @@
-include ':app', ':gitlijar'
+include ':app', ':teacup'

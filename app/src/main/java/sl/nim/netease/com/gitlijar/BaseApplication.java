@@ -3,22 +3,25 @@ package sl.nim.netease.com.gitlijar;
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.july.teacup.application.TeaCupBaseApplication;
+
 import sl.nim.netease.com.gitlijar.db.DaoMaster;
 import sl.nim.netease.com.gitlijar.db.DaoSession;
 
-public class BaseApplication extends Application {
+public class BaseApplication extends TeaCupBaseApplication {
 
-    private static DaoSession daoSeesion;
+    private DaoSession daoSeesion;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
         initDatabase();
+
     }
 
     private void initDatabase() {
-        DaoMaster.DevOpenHelper helper=new DaoMaster.DevOpenHelper(this,"SqBean.db");
+        DaoMaster.DevOpenHelper helper=new DaoMaster.DevOpenHelper(this,"oneTest.db");
         //获取可写数据库
         SQLiteDatabase db=helper.getWritableDatabase();
         //获取数据库对象
@@ -27,7 +30,7 @@ public class BaseApplication extends Application {
         daoSeesion=daoMaster.newSession();
     }
 
-    public static DaoSession getDaoInstant(){
+    public DaoSession getDaoInstant(){
         return daoSeesion;
     }
 

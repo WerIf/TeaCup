@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.WindowManager;
 
-import com.lily.gitlijar.adaptive.NavigationBar;
-import com.lily.gitlijar.annotation.autoknife.FindView;
-import com.lily.gitlijar.basics.BaseActivity;
+import com.july.teacup.adaptive.NavigationBar;
+import com.july.teacup.annotation.autoknife.FindView;
+import com.july.teacup.basics.BaseActivity;
 
 import sl.nim.netease.com.gitlijar.R;
 
