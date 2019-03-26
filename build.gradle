@@ -21,7 +21,7 @@ ext{
     applicationId='sl.nim.netease.com.gitlijar'
     compileSdkVersion=28
     targetSdkVersion=28
-    minSdkVersion=17
+    minSdkVersion=19
     versionCode=1
     versionName='1.0.0'
     sdkSourceCompatibility = 1.8

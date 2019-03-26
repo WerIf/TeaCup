@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".details.ToolBarActivity">
 
     <android.support.v7.widget.Toolbar
@@ -12,4 +13,19 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"/>
 
-</android.support.constraint.ConstraintLayout>
+    <com.july.teacup.view.TeaEditText
+        android:layout_width="@dimen/dp_250"
+        android:layout_height="@dimen/dp_70"
+        android:paddingTop="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_50"
+        android:layout_marginLeft="@dimen/dp_50"
+        app:TEdit_text="你好世界"
+        app:TEdit_onFocus="@drawable/tea_edit_background"
+        />
+
+
+    <EditText
+        android:id="@+id/teaEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
