@@ -19,6 +19,7 @@ import com.july.teacup.R;
 @SuppressLint("AppCompatCustomView")
 public class TeaEditText extends RelativeLayout implements View.OnTouchListener, TextWatcher, View.OnFocusChangeListener {
 
+    private int inputType;
     private int onFocusBack;
 
     private int defaultColor;
@@ -45,6 +46,7 @@ public class TeaEditText extends RelativeLayout implements View.OnTouchListener,
         try {
             hintText = typedArray.getString(R.styleable.TeaEditText_TEdit_text);
             onFocusBack=typedArray.getResourceId(R.styleable.TeaEditText_TEdit_onFocus,0);
+            inputType=typedArray.getInteger(R.styleable.TeaEditText_inputType,0);
         } finally {
             typedArray.recycle();
         }
@@ -66,6 +68,8 @@ public class TeaEditText extends RelativeLayout implements View.OnTouchListener,
         editText.setOnFocusChangeListener(this);
 
         editText.setHint(hintText);
+
+        editText.setInputType(inputType);
 
         if(onFocusBack!=0)
         {

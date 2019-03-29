@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp_220"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:background="@drawable/shape_show_dialog_bg"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/verification_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_45"
+        android:gravity="center"
+        android:text="title"
+        android:textColor="@color/black"
+        android:textSize="@dimen/sp_19" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50">
+        <com.july.teacup.view.TeaEditText
+            android:id="@+id/verification_input"
+            android:layout_marginLeft="@dimen/dp_20"
+            android:layout_gravity="center_vertical"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="@dimen/dp_35"
+            android:paddingLeft="@dimen/dp_5"
+            android:inputType="number"
+            app:TEdit_text="请输入验证码"
+            app:TEdit_onFocus="@drawable/tea_edit_background"/>
+        <Button
+            android:id="@+id/verification_vrf"
+            android:layout_marginLeft="@dimen/dp_150"
+            android:layout_width="@dimen/dp_70"
+            android:gravity="center"
+            android:background="@drawable/shap_left_bottom"
+            android:text="@string/obtain_verification"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+
+    <Button
+        android:id="@+id/verification_sure"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_45"
+        android:background="@drawable/shap_left_bottom"
+        android:gravity="center"
+        android:text="@string/sure"
+        android:textSize="@dimen/sp_16" />
+
+
+
+</LinearLayout>

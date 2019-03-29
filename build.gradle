@@ -5,23 +5,25 @@ buildscript {
     repositories {
         google()
         jcenter()
+
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
-        
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
         //GreenDao3依赖
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
+
     }
 }
 
 ext{
-    applicationId='sl.nim.netease.com.gitlijar'
+    applicationId='com.teacup'
     compileSdkVersion=28
     targetSdkVersion=28
-    minSdkVersion=19
+    minSdkVersion=21
     versionCode=1
     versionName='1.0.0'
     sdkSourceCompatibility = 1.8
@@ -31,6 +33,9 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url "http://maven.aliyun.com/nexus/content/repositories/releases"
+        }
     }
 }
 

@@ -25,4 +25,6 @@ public abstract class BaseDialog extends Dialog {
     public abstract int getContentViewResId();
 
     public abstract void init(Bundle savedInstanceState);
+
+
 }

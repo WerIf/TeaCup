@@ -6,6 +6,21 @@ def appName = "GitLiJar"
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
+    signingConfigs {
+        debug {
+            keyAlias 'july'
+            keyPassword 'licong'
+            storeFile file('D:/BaiduNetdiskDownload/july.jks')
+            storePassword '199612'
+        }
+        release {
+            keyAlias 'july'
+            keyPassword 'licong'
+            storeFile file('D:/BaiduNetdiskDownload/july.jks')
+            storePassword '199612'
+        }
+    }
+
     defaultConfig {
         applicationId rootProject.ext.applicationId
         minSdkVersion rootProject.ext.minSdkVersion
@@ -25,7 +40,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-
+            signingConfig signingConfigs.debug
         }
     }
     compileOptions {
@@ -43,7 +58,7 @@ android {
 
 greendao {
     schemaVersion 1 //数据库版本号
-    daoPackage 'sl.nim.netease.com.gitlijar.db'// 设置DaoMaster、DaoSession、Dao 包名
+    daoPackage 'com.teacup.db'// 设置DaoMaster、DaoSession、Dao 包名
     targetGenDir 'src/main/java'//设置DaoMaster、DaoSession、Dao目录
 }
 
@@ -62,6 +77,5 @@ dependencies {
     implementation 'org.greenrobot:eventbus:3.1.1'
     implementation 'org.greenrobot:greendao:3.2.0'
 
-
-
+    implementation 'com.aliyun.ams:alicloud-android-hotfix:3.1.1'
 }

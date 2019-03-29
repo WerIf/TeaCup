@@ -1,20 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="sl.nim.netease.com.gitlijar">
+    package="com.teacup">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+   <!--外部存储读权限，调试工具加载本地补丁需要-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".BaseApplication"
-        android:allowBackup="true"
+        android:name=".MainApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:replace="android:icon,android:name,android:theme,android:label">
+
+        <meta-data
+            android:name="com.taobao.android.hotfix.IDSECRET"
+            android:value="25893289" />
+        <meta-data
+            android:name="com.taobao.android.hotfix.APPSECRET"
+            android:value="0100882dbfc641ede053d8ccb686b311" />
+        <meta-data
+            android:name="com.taobao.android.hotfix.RSASECRET"
+            android:value="MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCgiLurdFfK7Vr60ORTDrmjMxSLOA4Uv05QEtA/ak2Tu0rEHj578Hvbgfiu8oIjMLq8FCcVtCTvNSKm6DdAvvuUPIByc4x/w0GEnlqrcYFCZWGqujBdj+wD9qOBPlDmfLpB3tXdLPv3Lbw23KZsC/NMFV1YrrYgX/6ehc0pgYrplpQ2NLn/A7221pw+6/Vqq6iGOrDZmXPWVHv+fu35Bi4F4NHFjIHZjpGwxKFfFG5n9VtAILCeQAdZvwIEbv4GNuODo+FNBc+tUFNuxUoiOnrLy08CAqmR6GqD87qEbr/CHu7ymgAMNW2RJkaSTFmL8flkxkhszO6wE0RcDt/9S6j7AgMBAAECggEAR22PUzJo/bmuiXr4nJworRzFP0ypt0GHrskwL4c1DU6AbdKnKq5N7dVeuTjd/ppn+9dbrKSC6oxR5sHcE8rmVYa2ADa5hP9z33Y2EaJnSQui8Tv22Sp4cSsEhTUc+fD1Tum/brHdSpXm8OIsilam4mt/JT5XewA7Yn1WU+l3zYaiIs7JzGg+hn4LkcHQDVMhOQGY8kdoX+MruJW7NSc7SZmWtQAkZfbQbysQOW+6buO8XIIe5+CiykQFylY7oBy+OXyxgC49IoNqnUwLPeao5lApaZoGStuaOoKDwLcdyOaOetaTbQgQ+hWMbdEoAKTBWvOzCVXJkuvIIbeod0tbgQKBgQD49FDSIvWO05NoXzS/qR97I4p7n1TjKImql6r8h4zW6ajklk6hB5n1CeiQvJNsq8tLFn0Narheq0rjwm+HYMYdMlkbLgNZAzbza0kLFDlVLGrdxK996OG4PfEvPGsNiRYprL2OWXka+C2+XiEhrGv8mmwk7NHKU+f0ODIRGzyZ8wKBgQClE88lfwx4yL6VkeuWi4KjaUP2H8lsTeSP11Qn2UHaKHdqJEuhsnZ8tqGi5BomwpJUtUawYzjncchTyjcJKs9ktX0+zygh0O7owFqrjERe46JS0Cb+qwvZVvb4iSpoaFVUiU+SUzAVncJ3LYSS8yWcJvIAIODHb2+xgVhCSQ6u2QKBgD/Li7JtlvNksE98pi2/DvwlHWWUbNJRHwYCG6Ter26bLdZ11exZ4E/0nA4K5NRiKZQyTRVVFa3cwzIeLypH2Dy/HCpk3iK/OiOiiHM4WYDEAxaVQktHlB/8b4OlPeGYEX/YbjK+JtSMaFxyDpdscbencrL7pL7uRXBFvj639g2VAoGAFCp1VblNhrvPPGpVA1ELpnbHjJuZeZeSYlgFudB6kPH8lITWkGxCuT1+RW3kG/QM+Dgk6ItWej+WH1ZGnuIR79WT9UZNOsRRSzGkYeyCtazNOZygBuBSVDyhcv8epR6JvggAJnnvF9Tr2q8+0MzPPWIskgNyMirU1DRe2coe9xECgYBIISp2/FA57YQqyFa7wbaqKnpW939yA4GyuJVtVasMfx8h0pwdnR3+1yvFxmcyTXSQmCXO9c1R1FgwH6qEVnGfCH4D8bmhs1bIgwsRY881lP2aB+io8qHeQIdbKjVVPjXXmxYygFw4QSz5fhq8AmSRlySoA3yFXISx7JxMam3Frw==" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,9 +52,12 @@
             android:theme="@style/BaseTheme" />
         <activity
             android:name=".details.CoordLayoutActivity"
+            android:fitsSystemWindows="true"
             android:theme="@style/TranslucentTheme" />
         <activity android:name=".details.SheetActivity" />
-        <activity android:name=".details.SqliteActivity"></activity>
+        <activity android:name=".details.SqliteActivity" />
+
+
     </application>
 
 </manifest>

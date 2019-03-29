@@ -28,4 +28,43 @@
         android:id="@+id/teaEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <!--<com.july.teacup.view.RadarView-->
+        <!--android:id="@+id/radarView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="10dp"-->
+        <!--app:circleColor="#565cd6"-->
+        <!--app:circleNum="4"-->
+        <!--app:flicker="3"-->
+        <!--app:speed="5"-->
+        <!--app:sweepColor="#565cd6"-->
+        <!--app:showCross="true"-->
+        <!--app:raindropNum="4" />-->
+
+    <com.july.teacup.view.RadarView
+        android:id="@+id/radarView"
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="@dimen/dp_200"
+        app:circleColor="#565cd6"
+        app:flicker="5"
+        app:circleNum="3"
+        app:raindropColor="@color/gold"
+        app:raindropNum="5"
+        app:showCross="true"
+        app:showRaindrop="true"
+        app:speed="4.0"
+        app:sweepColor="@color/yellow"/>
+
+    <Button
+        android:id="@+id/stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="stop"/>
+
+    <Button
+        android:id="@+id/start_Launch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="start" />
 </LinearLayout>
