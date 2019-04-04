@@ -1,8 +1,9 @@
 package com.teacup.db;
 
-import java.util.List;
-
+import com.july.teacup.application.TeaCupBaseApplication;
 import com.teacup.BaseApplication;
+
+import java.util.List;
 
 public class DaoUtils {
 
@@ -57,7 +58,7 @@ public class DaoUtils {
         return daoSession.getSqBeanDao().load(key);
     }
 
-    public List<SqBean> queryObjectFormCondition(String where,String selectionArg){
+    public List<SqBean> queryObjectFormCondition(String where, String selectionArg){
         return daoSession.getSqBeanDao().queryRaw(where,selectionArg);
     }
 }

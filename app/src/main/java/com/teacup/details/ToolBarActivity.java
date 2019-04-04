@@ -51,9 +51,9 @@ public class ToolBarActivity extends BaseActivity implements View.OnClickListene
 
         toolbar.setNavigationOnClickListener(this);
 
-        stop.setOnClickListener(v -> radarView.stop());
-
-        launch.setOnClickListener(v -> radarView.start());
+//        stop.setOnClickListener(v -> radarView.stop());
+//
+//        launch.setOnClickListener(v -> radarView.start());
     }
 
     @Override

@@ -3,6 +3,8 @@ package com.july.teacup.ImageUtils.compress;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import com.july.teacup.ImageUtils.imgbasics.ImageCompressInterface;
+
 /**
  *      RGB_565法
  *      图片大小直接压缩到原来的一半，但是长度和宽度没有变，相比ARGB_8888减少了一般的内存

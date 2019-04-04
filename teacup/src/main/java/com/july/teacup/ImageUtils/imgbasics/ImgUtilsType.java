@@ -1,4 +1,4 @@
-package com.july.teacup.ImageUtils;
+package com.july.teacup.ImageUtils.imgbasics;
 
 public enum ImgUtilsType {
     IMAGE_LOAD_ERROR(0),

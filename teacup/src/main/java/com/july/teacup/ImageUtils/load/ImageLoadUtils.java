@@ -8,9 +8,9 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.july.teacup.ImageUtils.ImgUtilsType;
+import com.july.teacup.ImageUtils.imgbasics.ImgUtilsType;
 
-public class ImageLoadUtils implements GlideImageLoadInterface {
+public class ImageLoadUtils extends LoadBasice implements GlideImageLoadInterface {
 
     /**
      * 因为在的版本中android 后台更加频繁的调用GC机制
@@ -23,6 +23,10 @@ public class ImageLoadUtils implements GlideImageLoadInterface {
     LruCache<String,Bitmap> bitmapLruCache;
 
 
+    public void ImageTaskDownLoad(ImageView mImageView){
+        ImageLoadTask imageTask = new ImageLoadTask(mImageView);
+        imageTask.execute("http://s7.sinaimg.cn/mw690/001m1Utdzy6ZLnVyRxQe6&690");
+    }
 
     private ImageLoadUtils(){
         //设置图片总共占有的最大内存
@@ -30,9 +34,9 @@ public class ImageLoadUtils implements GlideImageLoadInterface {
         bitmapLruCache=new LruCache<String,Bitmap>(maxMemory);
     }
 
-    public static ImageLoadUtils getInstance(){
-        return ImageUtils.getInstance;
-    }
+//    public static ImageLoadUtils getInstance(){
+//        return ImageUtils.getInstance;
+//    }
 
     @Override
     public void ImageLoad(Context mContext, ImageView mImageView, String url) {
@@ -73,10 +77,7 @@ public class ImageLoadUtils implements GlideImageLoadInterface {
                 .into(mImageView);
     }
 
-    public void ImageTaskDownLoad(ImageView mImageView){
-        ImageLoadTask imageTask = new ImageLoadTask(mImageView);
-        imageTask.execute("http://s7.sinaimg.cn/mw690/001m1Utdzy6ZLnVyRxQe6&690");
-    }
+
 
 
 

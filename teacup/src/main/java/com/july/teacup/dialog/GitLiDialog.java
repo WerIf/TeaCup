@@ -18,7 +18,7 @@ public class GitLiDialog<T> {
     }
 
     private static <T extends  BaseDialog> T backObject(Class<T> tClass, Context context) {
-        
+
             synchronized (tClass){
                 if(baseDialog==null){
                     try {

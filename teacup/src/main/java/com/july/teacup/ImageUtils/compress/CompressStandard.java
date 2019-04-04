@@ -1,4 +1,4 @@
-package com.july.teacup.ImageUtils;
+package com.july.teacup.ImageUtils.compress;
 
 public enum CompressStandard {
     HORIZON(0),

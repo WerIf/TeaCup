@@ -3,6 +3,8 @@ package com.july.teacup.ImageUtils.compress;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import com.july.teacup.ImageUtils.imgbasics.ImageCompressInterface;
+
 /**
  *      采样率压缩
  *      通过设置multiple的值(int)后，加入设置为2，则宽和高都为原来的1/2，宽高都减少了，

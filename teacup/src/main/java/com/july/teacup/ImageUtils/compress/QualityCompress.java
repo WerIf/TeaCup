@@ -3,6 +3,8 @@ package com.july.teacup.ImageUtils.compress;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import com.july.teacup.ImageUtils.imgbasics.ImageCompressInterface;
+
 import java.io.ByteArrayOutputStream;
 
 /**

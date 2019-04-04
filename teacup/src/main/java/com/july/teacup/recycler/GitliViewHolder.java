@@ -7,9 +7,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.july.teacup.ImageUtils.TeaCupImage;
+import com.july.teacup.ImageUtils.imgbasics.ImageBasice;
 import com.july.teacup.ImageUtils.load.GlideImageLoadInterface;
 import com.july.teacup.ImageUtils.load.ImageLoadUtils;
-import com.july.teacup.ImageUtils.ImgUtilsType;
+import com.july.teacup.ImageUtils.imgbasics.ImgUtilsType;
 
 public class GitliViewHolder extends RecyclerView.ViewHolder {
     private final View mItemView;
@@ -41,7 +43,8 @@ public class GitliViewHolder extends RecyclerView.ViewHolder {
         ImageView mImageView = mItemView.findViewById(resourceId);
 
         if (utilLoadImage==null){
-            utilLoadImage=ImageLoadUtils.getInstance();
+//            utilLoadImage=ImageLoadUtils.getInstance();
+            utilLoadImage=TeaCupImage.getService(ImageLoadUtils.class);
         }
 
         utilLoadImage.ImageLoad(mContext,mImageView,url);
@@ -51,7 +54,8 @@ public class GitliViewHolder extends RecyclerView.ViewHolder {
         ImageView mImageView = mItemView.findViewById(resourceId);
 
         if (utilLoadImage==null){
-            utilLoadImage=ImageLoadUtils.getInstance();
+//            utilLoadImage=ImageLoadUtils.getInstance();
+            utilLoadImage=TeaCupImage.getService(ImageLoadUtils.class);
         }
 
         utilLoadImage.ImageLoad(mContext,mImageView,url,errorOrPlacePath,type);
@@ -61,7 +65,8 @@ public class GitliViewHolder extends RecyclerView.ViewHolder {
         ImageView mImageView = mItemView.findViewById(resourceId);
 
         if (utilLoadImage==null){
-            utilLoadImage=ImageLoadUtils.getInstance();
+//            utilLoadImage=ImageLoadUtils.getInstance();
+            utilLoadImage=TeaCupImage.getService(ImageLoadUtils.class);
         }
 
         utilLoadImage.ImageLoad(mContext,mImageView,url,errorPath,placePath);

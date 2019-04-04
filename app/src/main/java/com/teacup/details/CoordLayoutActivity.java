@@ -6,11 +6,13 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import com.july.teacup.ImageUtils.TeaCupImage;
 import com.july.teacup.ImageUtils.load.ImageLoadUtils;
 import com.july.teacup.adaptive.NavigationBar;
 import com.july.teacup.annotation.autoknife.FindView;
@@ -44,7 +46,10 @@ public class CoordLayoutActivity extends BaseActivity {
         //显示返回按钮
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        ImageLoadUtils.getInstance().ImageLoad(this, backdrop, "https://graph.baidu.com/resource/102fda281f5ea56e567b701553845595.jpg");
+//        ImageLoadUtils.getInstance().ImageLoad(this, backdrop, "https://graph.baidu.com/resource/102fda281f5ea56e567b701553845595.jpg");
+//        TeaCupImage.getService(ImageLoadUtils.class).ImageLoad(this, backdrop, "https://graph.baidu.com/resource/102fda281f5ea56e567b701553845595.jpg");
+
+        Log.e("TAG","println result :"+(TeaCupImage.getService(ImageLoadUtils.class) ==null));
     }
 
     @Override

@@ -3,7 +3,7 @@ package com.july.teacup.ImageUtils.compress;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import com.july.teacup.ImageUtils.CompressStandard;
+import com.july.teacup.ImageUtils.imgbasics.ImageCompressInterface;
 
 /**
  *      创建期望大小Bitmap

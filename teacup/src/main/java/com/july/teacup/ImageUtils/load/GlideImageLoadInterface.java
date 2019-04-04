@@ -3,7 +3,7 @@ package com.july.teacup.ImageUtils.load;
 import android.content.Context;
 import android.widget.ImageView;
 
-import com.july.teacup.ImageUtils.ImgUtilsType;
+import com.july.teacup.ImageUtils.imgbasics.ImgUtilsType;
 
 public interface GlideImageLoadInterface {
 

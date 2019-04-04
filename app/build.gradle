@@ -32,20 +32,27 @@ android {
         buildConfigField("String", "SERVICE_URL", "\"http://123.206.24.66:8888/skkx/Login/userLogin\"")
         compileOptions {
             //处理 Invoke-customs are only supported starting with Android O (--min-api 26)  问题
-            sourceCompatibility JavaVersion.VERSION_1_8
-            targetCompatibility JavaVersion.VERSION_1_8
+//            sourceCompatibility JavaVersion.VERSION_1_8
+//            targetCompatibility JavaVersion.VERSION_1_8
+
+            sourceCompatibility rootProject.ext.sdkSourceCompatibility
+            targetCompatibility rootProject.ext.sdkTargetCompatibility
         }
     }
     buildTypes {
         release {
+            debuggable true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.debug
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+//        sourceCompatibility JavaVersion.VERSION_1_8
+//        targetCompatibility JavaVersion.VERSION_1_8
+
+        sourceCompatibility rootProject.ext.sdkSourceCompatibility
+        targetCompatibility rootProject.ext.sdkTargetCompatibility
     }
 
     android.applicationVariants.all {
@@ -76,6 +83,5 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
     implementation 'org.greenrobot:eventbus:3.1.1'
     implementation 'org.greenrobot:greendao:3.2.0'
-
-    implementation 'com.aliyun.ams:alicloud-android-hotfix:3.1.1'
+    implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.6'
 }

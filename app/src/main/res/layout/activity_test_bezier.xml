@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".details.TestBezierActivity"
+    android:orientation="vertical">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="开始"
+        android:onClick="start"/>
+
+    <com.july.teacup.view.CircleBezierView
+        android:id="@+id/circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+    <com.july.teacup.view.BubbleView
+        android:id="@+id/dragBubbleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        app:bubbleColor="#ff0000"
+        app:bubbleRadius="16dp"
+        app:textColor="#ffffff"
+        app:textSize="16sp" />
+
+    <!--<com.july.teacup.view.DragBubbleView-->
+        <!--android:id="@+id/dragBubbleView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--app:bubbleColor="#ff0000"-->
+        <!--app:bubbleRadius="16dp"-->
+        <!--app:textColor="@color/aqua"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--app:textSize="16sp" />-->
+
+</RelativeLayout>

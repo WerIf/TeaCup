@@ -46,7 +46,7 @@ public class TeaEditText extends RelativeLayout implements View.OnTouchListener,
         try {
             hintText = typedArray.getString(R.styleable.TeaEditText_TEdit_text);
             onFocusBack=typedArray.getResourceId(R.styleable.TeaEditText_TEdit_onFocus,0);
-            inputType=typedArray.getInteger(R.styleable.TeaEditText_inputType,0);
+//            inputType=typedArray.getInteger(R.styleable.TeaEditText_inputType,0);
         } finally {
             typedArray.recycle();
         }

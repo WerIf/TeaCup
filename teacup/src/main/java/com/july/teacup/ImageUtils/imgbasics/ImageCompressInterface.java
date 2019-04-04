@@ -1,4 +1,4 @@
-package com.july.teacup.ImageUtils.compress;
+package com.july.teacup.ImageUtils.imgbasics;
 
 import android.graphics.Bitmap;
 
@@ -17,6 +17,6 @@ import android.graphics.Bitmap;
  *              RGB_565
  *                  表示16位RGB位图，即R=5，G=6，B=6,它没有透明度，一个像素点占5+6+5=16位，2个字节
  */
-public  interface ImageCompressInterface {
+public  interface ImageCompressInterface extends ImageFace{
     Bitmap compressBitmap(Object ... params);
 }

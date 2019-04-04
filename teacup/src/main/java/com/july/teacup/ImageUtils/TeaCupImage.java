@@ -1,9 +1,9 @@
 package com.july.teacup.ImageUtils;
 
-import com.july.teacup.ImageUtils.compress.CompressBasics;
+import com.july.teacup.ImageUtils.imgbasics.ImageBasice;
 
-public class GitLiImage<T> {
-    public static <T extends CompressBasics> T getService(Class<T> tClass){
+public class TeaCupImage<T> {
+    public static <T extends ImageBasice> T getService(Class<T> tClass){
         try {
             return (T)tClass.newInstance();
         } catch (IllegalAccessException e) {

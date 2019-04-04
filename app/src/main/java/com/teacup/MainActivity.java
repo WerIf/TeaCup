@@ -2,7 +2,7 @@ package com.teacup;
 
 import android.Manifest;
 import android.graphics.Bitmap;
-import android.os.Build;
+
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
@@ -20,6 +20,7 @@ import com.july.teacup.basics.BaseActivity;
 import com.july.teacup.basics.NetWorkCondition;
 import com.july.teacup.dialog.GitLiDialog;
 import com.july.teacup.dialog.details.HintDialog;
+import com.july.teacup.hotupdate.DexManager;
 import com.july.teacup.permission.PermissionHelper;
 import com.july.teacup.permission.PermissionInterface;
 import com.july.teacup.toast.ToastUtils;
@@ -31,19 +32,20 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.july.teacup.view.RadarView;
+
 import com.taobao.sophix.SophixManager;
 import com.teacup.been.MessageEvent;
+import com.teacup.details.BazierActivity;
 import com.teacup.details.CardViewActivity;
 import com.teacup.details.CoordLayoutActivity;
 import com.teacup.details.SheetActivity;
 import com.teacup.details.SqliteActivity;
+import com.teacup.details.TestBezierActivity;
 import com.teacup.details.ToolBarActivity;
 
 
 public class MainActivity extends BaseActivity implements NetWorkCondition, PermissionInterface {
 
-    private static final String APKPATCH_PATH="/out.apatch";
 
     private Handler handler = new Handler() {
         @Override
@@ -88,38 +90,15 @@ public class MainActivity extends BaseActivity implements NetWorkCondition, Perm
     public void init(Bundle savedInstanceState) {
         EventBus.getDefault().register(this);
 
-//        ImageLoadUtils.getInstance().ImageTaskDownLoad(loading_one);
-
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                HttpAsyncImageLoadUtils http = HttpAsyncImageLoadUtils.getInstance();
-//                http.setWorkCondition(MainActivity.this);
-//                http.AsyncImageDownLoad("http://s7.sinaimg.cn/mw690/001m1Utdzy6ZLnVyRxQe6&690");
-//
-//
-//            }
-//        }).start();
 
 
         PermissionHelper helper=new PermissionHelper(this,this);
         helper.requestPermissions();
 
 
-        updateConsole(MainApplication.cacheMsg.toString());
 
+        lambda.setText("程序员发现并解决了bug");
 
-        MainApplication.msgDisplayListener = new MainApplication.MsgDisplayListener() {
-            @Override
-            public void handle(final String msg) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        updateConsole(msg);
-                    }
-                });
-            }
-        };
 
 
         lambda.setOnClickListener(
@@ -140,16 +119,9 @@ public class MainActivity extends BaseActivity implements NetWorkCondition, Perm
         evenBus.setOnClickListener(view -> EventBus.getDefault().post(new MessageEvent("gitly", "15")));
     }
 
-    private void updateConsole(String content) {
-//        mStatusStr += content + "\n";
-//        if (mStatusTv != null) {
-//            mStatusTv.setText(mStatusStr);
-//        }
 
-        Toast.makeText(this, content, Toast.LENGTH_LONG).show();
-    }
 
-    @OnClick({R.id.toolBar, R.id.cardView, R.id.coordinator, R.id.sheet, R.id.network_urlconnection, R.id.network_httpurlconnection, R.id.show_evenBus, R.id.greeDao})
+    @OnClick({R.id.toolBar, R.id.cardView, R.id.coordinator, R.id.sheet, R.id.network_urlconnection, R.id.network_httpurlconnection, R.id.show_evenBus, R.id.greeDao,R.id.bezier,R.id.testbezier})
     public void onClick(View view) {
 
         Map<String, String> params = initMap();
@@ -157,23 +129,12 @@ public class MainActivity extends BaseActivity implements NetWorkCondition, Perm
         switch (view.getId()) {
             case R.id.toolBar:
                 ToolBarActivity.start(this);
-
-//                Toast.makeText(this, "Hello world  hokfix", Toast.LENGTH_LONG).show();
-
                 break;
             case R.id.cardView:
                 CardViewActivity.start(this);
-
-//                String patchFileString=Environment.getExternalStorageDirectory()
-//                        .getAbsolutePath()+APKPATCH_PATH;
-//
-//                AndFixPathManager.getInstance().addPatch(patchFileString);
-
-//                SophixManager.getInstance().queryAndLoadNewPatch();
                 break;
             case R.id.coordinator:
                 CoordLayoutActivity.start(this);
-
                 break;
             case R.id.sheet:
                 SheetActivity.start(this);
@@ -190,9 +151,13 @@ public class MainActivity extends BaseActivity implements NetWorkCondition, Perm
             case R.id.greeDao:
                 SqliteActivity.start(this);
                 break;
-//               default:
-//                   ToastUtils.makeText(this,"hello world",ToastUtils.LENGTH_SHORT).show();
-//               break;
+            case R.id.bezier:
+                BazierActivity.start(this);
+                break;
+            case R.id.testbezier:
+                TestBezierActivity.start(this);
+                break;
+
         }
     }
 
