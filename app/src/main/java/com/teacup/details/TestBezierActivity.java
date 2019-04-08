@@ -11,15 +11,17 @@ import com.july.teacup.basics.BaseActivity;
 import com.july.teacup.toast.ToastUtils;
 import com.july.teacup.view.BubbleView;
 import com.july.teacup.view.CircleBezierView;
-import com.july.teacup.view.DragBubbleView;
+import com.july.teacup.view.TestView;
 import com.teacup.R;
 
-public class TestBezierActivity extends BaseActivity implements BubbleView.OnBubbleStateListener, DragBubbleView.OnBubbleStateListener {
+public class TestBezierActivity extends BaseActivity implements BubbleView.OnBubbleStateListener{
 
     @FindView(R.id.circle)
     CircleBezierView circle;
     @FindView(R.id.dragBubbleView)
     BubbleView mDragBubbleView;
+    @FindView(R.id.testView)
+    TestView testView;
 
     public static void start(Context context){
         context.startActivity(new Intent(context,TestBezierActivity.class));
@@ -44,9 +46,8 @@ public class TestBezierActivity extends BaseActivity implements BubbleView.OnBub
     }
 
     public void start(View view) {
-//        circle.startAnimation();
-
-        mDragBubbleView.reCreate();
+//        mDragBubbleView.reCreate();
+        testView.start();
     }
 
     @Override
@@ -73,4 +74,7 @@ public class TestBezierActivity extends BaseActivity implements BubbleView.OnBub
     }
 
 
+    public void addClick(View view) {
+        testView.start();
+    }
 }

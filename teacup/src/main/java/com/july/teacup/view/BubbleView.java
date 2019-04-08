@@ -139,7 +139,7 @@ public class BubbleView extends TextView {
             mTextColor = ta.getColor(R.styleable.BubbleView_textColor, Color.WHITE);
             mState = STATE_DEFAULT;
             mCircleRadius = mBubbleRadius;
-            maxDruation = 6 * mBubbleRadius;
+            maxDruation = 5 * mBubbleRadius;
 
         }finally {
             ta.recycle();
@@ -194,7 +194,7 @@ public class BubbleView extends TextView {
         }
         return result;
     }
-    
+
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -296,7 +296,7 @@ public class BubbleView extends TextView {
                 if(mState==STATE_DRAG){
                     setBubbleRestoreAnim();
                 }else if(mState==STATE_MOVE){
-                   if(druation<2*maxDruation){
+                   if(druation<maxDruation){
                        setBubbleRestoreAnim();
                    }else{
                        setBubbleDismissAnim();

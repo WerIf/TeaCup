@@ -9,7 +9,7 @@ import android.widget.RadioGroup;
 
 import com.july.teacup.annotation.autoknife.FindView;
 import com.july.teacup.basics.BaseActivity;
-import com.july.teacup.view.BazierView;
+//import com.july.teacup.view.BazierView;
 import com.teacup.R;
 
 public class BazierActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
@@ -21,8 +21,8 @@ public class BazierActivity extends BaseActivity implements RadioGroup.OnChecked
     RadioButton two;
     @FindView(R.id.group)
     RadioGroup group;
-    @FindView(R.id.bazier)
-    BazierView bazier;
+//    @FindView(R.id.bazier)
+//    BazierView bazier;
 
     public static void start(Context context){
         context.startActivity(new Intent(context,BazierActivity.class));
@@ -52,10 +52,10 @@ public class BazierActivity extends BaseActivity implements RadioGroup.OnChecked
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (group.getCheckedRadioButtonId()){
             case R.id.one:
-                bazier.chooseOther(true);
+//                bazier.chooseOther(true);
                 break;
             case R.id.two:
-                bazier.chooseOther(false);
+//                bazier.chooseOther(false);
                 break;
         }
     }

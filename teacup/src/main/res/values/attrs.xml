@@ -31,19 +31,28 @@
         <attr name="showRaindrop" format="boolean"/>
     </declare-styleable>
 
+    <!--仿qq 气泡拽动效果-->
     <declare-styleable name="BubbleView">
+        <!--拽动圆的半径-->
         <attr name="bubbleRadius" format="dimension" />
+        <!--拽动圆的颜色-->
         <attr name="bubbleColor" format="color" />
         <attr name="text" format="string" />
         <attr name="textSize" format="dimension" />
         <attr name="textColor" format="color" />
     </declare-styleable>
 
-    <!--<declare-styleable name="DragBubbleView">-->
-        <!--<attr name="bubbleRadius" format="dimension" />-->
-        <!--<attr name="bubbleColor" format="color" />-->
-        <!--<attr name="text" format="string" />-->
-        <!--<attr name="textSize" format="dimension" />-->
-        <!--<attr name="textColor" format="color" />-->
-    <!--</declare-styleable>-->
+    <!--漂浮图片-->
+    <declare-styleable name="WaveView">
+        <!--水波的波峰-->
+        <attr name="waveHeight" format="integer"/>
+        <!--一个水波的波长-->
+        <attr name="waveLength" format="integer"/>
+        <!--流动速度-->
+        <attr name="waveSpeed" format="integer"/>
+        <!--水颜色-->
+        <attr name="waterColor" format="color"/>
+        <!--漂浮图片-->
+        <attr name="flotageImage" format="reference"/>
+    </declare-styleable>
 </resources>

@@ -7,10 +7,10 @@
     tools:context=".details.BazierActivity">
 
 
-    <com.july.teacup.view.BazierView
-        android:id="@+id/bazier"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <!--<com.july.teacup.view.BazierView-->
+        <!--android:id="@+id/bazier"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
 
     <RadioGroup
         android:id="@+id/group"
