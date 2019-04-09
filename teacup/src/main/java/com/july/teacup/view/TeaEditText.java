@@ -11,6 +11,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
@@ -89,7 +90,6 @@ public class TeaEditText extends RelativeLayout implements View.OnTouchListener,
         if (motionEvent.getX() > editText.getWidth()
                 - editText.getPaddingRight()
                 - drawable.getIntrinsicWidth()){
-//            ToastUtils.makeText(mContext,"点击了取消",ToastUtils.LENGTH_LONG).show();
             editText.setText("");
         }
 
@@ -118,5 +118,22 @@ public class TeaEditText extends RelativeLayout implements View.OnTouchListener,
     @Override
     public void onFocusChange(View view, boolean b) {
 
+//        if(b){
+//            //弹出输入键盘
+//            InputMethodManager inputManager = (InputMethodManager) editText
+//                    .getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+//            inputManager.showSoftInput(editText, 0);
+//        }
+
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        return false;
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        return super.dispatchTouchEvent(ev);
     }
 }

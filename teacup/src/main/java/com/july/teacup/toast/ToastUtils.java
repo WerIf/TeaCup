@@ -44,6 +44,22 @@ public class ToastUtils {
         mTextView = (TextView) mView.findViewById(R.id.mbMessage);
     }
 
+    public static ToastUtils makeText(Context context, String message) {
+        if (mInstance == null) {
+            mInstance = new ToastUtils(context);
+        } else {
+            // 考虑Activity切换时，Toast依然显示
+            if (!mContext.getClass().getName().endsWith(context.getClass().getName())) {
+                mInstance = new ToastUtils(context);
+            }
+        }
+
+        mInstance.HIDE_DELAY = 2500;
+
+        mTextView.setText(message);
+        return mInstance;
+    }
+
     public static ToastUtils makeText(Context context, String message,
                                       int HIDE_DELAY) {
         if (mInstance == null) {

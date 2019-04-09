@@ -3,7 +3,11 @@ package com.teacup.details;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.Toolbar;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -49,6 +53,8 @@ public class ToolBarActivity extends BaseActivity implements View.OnClickListene
 //        setSupportActionBar(toolbar);
 //        toolbar.setNavigationIcon(R.mipmap.back);
 
+
+
         toolbar.setNavigationOnClickListener(this);
 
 //        stop.setOnClickListener(v -> radarView.stop());
@@ -58,7 +64,13 @@ public class ToolBarActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public void beforeOnCreate() {
-
+//        Transition explode = TransitionInflater.from(this).inflateTransition(android.R.transition.explode);
+//        Transition fade = TransitionInflater.from(this).inflateTransition(android.R.transition.fade);
+//        Transition move = TransitionInflater.from(this).inflateTransition(android.R.transition.move);
+//        Transition slide_left = TransitionInflater.from(this).inflateTransition(android.R.transition.slide_left);
+//
+//        //使用动画时机
+//        getWindow().setExitTransition(slide_left);
     }
 
     @Override
@@ -71,5 +83,21 @@ public class ToolBarActivity extends BaseActivity implements View.OnClickListene
     @Override
     public void onClick(View view) {
         finish();
+    }
+
+    public void translate(View view) {
+        //两个界面拥有相同的图片 采用这种方式跳转
+        ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(this, view, getString(R.string.trans));
+        ActivityCompat.startActivity(this, new Intent(this, MaterialDesignTestActivity.class), compat.toBundle());
+
+
+        //从右下方弹出
+//        ActivityOptionsCompat options4 = ActivityOptionsCompat.makeClipRevealAnimation(view, view.getWidth() / 2, view.getHeight() / 2, 1000, 1000);
+//        ActivityCompat.startActivity(this, new Intent(this, MaterialDesignTestActivity.class), options4.toBundle());
+
+//        ActivityOptionsCompat options6 = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
+//        ActivityCompat.startActivity(this, new Intent(this, MaterialDesignTestActivity.class), options6.toBundle());
+//
+
     }
 }

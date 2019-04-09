@@ -1,4 +1,4 @@
-package com.july.teacup.slide;
+package com.july.teacup.recycler;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -13,6 +13,10 @@ import com.july.teacup.recycler.OnBackViewHolder;
 
 import java.util.List;
 
+/**
+ *  侧滑快速定位列表Adapter
+ * @param <T>
+ */
 public class SlideIndexAdapter<T extends BaseComparableBean> extends RecyclerView.Adapter<GitliViewHolder> {
     private final Context mContext;
     private final int mIndexViewId;
@@ -39,7 +43,7 @@ public class SlideIndexAdapter<T extends BaseComparableBean> extends RecyclerVie
          * 避免在layoutItem显示是尺寸不能正常显示
          */
         View mView=LayoutInflater.from(mContext).inflate(mResourceId,null);
-        return new GitliViewHolder(mView,mIndexViewId);
+        return new GitliViewHolder(mView);
     }
 
     @Override

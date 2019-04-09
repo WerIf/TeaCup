@@ -28,7 +28,7 @@ public class ImageLoadUtils extends LoadBasice implements GlideImageLoadInterfac
         imageTask.execute("http://s7.sinaimg.cn/mw690/001m1Utdzy6ZLnVyRxQe6&690");
     }
 
-    private ImageLoadUtils(){
+    public ImageLoadUtils(){
         //设置图片总共占有的最大内存
         int maxMemory= (int) (Runtime.getRuntime().maxMemory()/4);
         bitmapLruCache=new LruCache<String,Bitmap>(maxMemory);

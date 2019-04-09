@@ -47,9 +47,12 @@ public class CoordLayoutActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 //        ImageLoadUtils.getInstance().ImageLoad(this, backdrop, "https://graph.baidu.com/resource/102fda281f5ea56e567b701553845595.jpg");
-//        TeaCupImage.getService(ImageLoadUtils.class).ImageLoad(this, backdrop, "https://graph.baidu.com/resource/102fda281f5ea56e567b701553845595.jpg");
 
-        Log.e("TAG","println result :"+(TeaCupImage.getService(ImageLoadUtils.class) ==null));
+        ImageLoadUtils utils = TeaCupImage.getService(ImageLoadUtils.class);
+        Log.e("TAG","println result :"+(utils ==null));
+        utils.ImageLoad(this, backdrop, "https://graph.baidu.com/resource/102fda281f5ea56e567b701553845595.jpg");
+
+
     }
 
     @Override

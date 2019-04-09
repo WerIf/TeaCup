@@ -9,15 +9,19 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.View;
 
 import com.google.gson.Gson;
 import com.july.teacup.annotation.autoknife.FindKnifeProcess;
 import com.july.teacup.annotation.autowired.AutoWriedProcess;
 import com.july.teacup.bean.BaseBean;
+import com.july.teacup.click.EventListener;
 import com.july.teacup.toast.ToastUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.lang.reflect.Method;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -162,4 +166,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
+
+    public <T extends View> T findClickView(int id) {
+
+        T view = (T) findViewById(id);
+        view.setOnClickListener(new EventListener(this));
+        return view;
+    }
+
 }

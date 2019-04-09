@@ -4,9 +4,14 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.view.View;
 
+import com.july.teacup.basics.BaseActivity;
+import com.july.teacup.click.EventListener;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
 public class FindKnifeProcess {
 
@@ -14,7 +19,7 @@ public class FindKnifeProcess {
     /**
      * 绑定Activity
      */
-    public static void bind(final Activity activity) {
+    public static void bind(final BaseActivity activity) {
         Class annotationParent = activity.getClass();
         Field[] fields = annotationParent.getDeclaredFields();
         Method[] methods = annotationParent.getDeclaredMethods();
@@ -23,19 +28,20 @@ public class FindKnifeProcess {
             OnClick clickMethod = method.getAnnotation(OnClick.class);
             if (clickMethod != null && clickMethod.value().length != 0) {
                 for (int id : clickMethod.value()) {
-                    final View view = activity.findViewById(id);
-                    view.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            try {
-                                method.invoke(activity, view);
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            } catch (InvocationTargetException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
+                    final View view = activity.findClickView(id);
+//                    view.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            try {
+//                                method.invoke(activity, view);
+//                            } catch (IllegalAccessException e) {
+//                                e.printStackTrace();
+//                            } catch (InvocationTargetException e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+//                    });
+
                 }
             }
         }

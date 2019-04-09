@@ -1,14 +1,19 @@
 package com.teacup;
 
 import android.Manifest;
+import android.app.Activity;
 import android.graphics.Bitmap;
 
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.transition.Explode;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,6 +28,9 @@ import com.july.teacup.dialog.details.HintDialog;
 import com.july.teacup.hotupdate.DexManager;
 import com.july.teacup.permission.PermissionHelper;
 import com.july.teacup.permission.PermissionInterface;
+import com.july.teacup.recycler.GitliRecyclerAdapter;
+import com.july.teacup.recycler.GitliViewHolder;
+import com.july.teacup.recycler.OnBackViewHolder;
 import com.july.teacup.toast.ToastUtils;
 
 import org.greenrobot.eventbus.EventBus;
@@ -44,7 +52,7 @@ import com.teacup.details.TestBezierActivity;
 import com.teacup.details.ToolBarActivity;
 
 
-public class MainActivity extends BaseActivity implements NetWorkCondition, PermissionInterface {
+public class MainActivity extends Activity implements NetWorkCondition, PermissionInterface {
 
 
     private Handler handler = new Handler() {
@@ -60,106 +68,101 @@ public class MainActivity extends BaseActivity implements NetWorkCondition, Perm
         }
     };
 
-    @FindView(R.id.loading_one)
-    ImageView loading_one;
+    private String[] lists=new String[]{
+            "toolbar",
+            "cardView",
+            "coordinator",
+            "greendao",
+            "bezier",
+            "bezier 测试"
+    };
 
-    @FindView(R.id.loading_two)
-    ImageView loading_two;
-
-    @FindView(R.id.jdk_lambda)
-    Button lambda;
-
-    @FindView(R.id.send_evenBus)
-    Button evenBus;
-
-    @FindView(R.id.show_evenBus)
-    TextView showText;
+    RecyclerView recyclerView;
 
     @Override
-    public void beforeOnCreate() {
+    protected void onCreate( Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+        getWindow().setExitTransition(new Explode());
+        setContentView(R.layout.activity_main);
 
+        init();
     }
 
 
-    @Override
-    public int getContentViewResId() {
-        return R.layout.activity_main;
-    }
 
-    @Override
-    public void init(Bundle savedInstanceState) {
+
+    public void init() {
+
+        recyclerView=findViewById(R.id.recyclerView);
+
         EventBus.getDefault().register(this);
 
 
-
-        PermissionHelper helper=new PermissionHelper(this,this);
+        PermissionHelper helper = new PermissionHelper(this, this);
         helper.requestPermissions();
 
 
-
-        lambda.setText("程序员发现并解决了bug");
-
-
-
-        lambda.setOnClickListener(
-                view ->
-                        GitLiDialog.getService(HintDialog.class, this)
-                                .setTitle("HINT TITLE")
-                                .setData("hello world")
-                                .setOnClickAffirm("确认", view1 -> ToastUtils.makeText(MainActivity.this, "click sure", ToastUtils.LENGTH_LONG).show())
-                                .setOnClickDisqualify("取消", view1 -> ToastUtils.makeText(MainActivity.this, "click cancel", ToastUtils.LENGTH_LONG).show())
-                                .show()
-        );
+//        lambda.setText("程序员发现并解决了bug");
+//
+//
+//        lambda.setOnClickListener(
+//                view ->
+//                        GitLiDialog.getService(HintDialog.class, this)
+//                                .setTitle("HINT TITLE")
+//                                .setData("hello world")
+//                                .setOnClickAffirm("确认", view1 -> ToastUtils.makeText(MainActivity.this, "click sure", ToastUtils.LENGTH_LONG).show())
+//                                .setOnClickDisqualify("取消", view1 -> ToastUtils.makeText(MainActivity.this, "click cancel", ToastUtils.LENGTH_LONG).show())
+//                                .show()
+//        );
 
 
         initView();
     }
 
     private void initView() {
-        evenBus.setOnClickListener(view -> EventBus.getDefault().post(new MessageEvent("gitly", "15")));
+//        evenBus.setOnClickListener(view -> EventBus.getDefault().post(new MessageEvent("gitly", "15")));
+
+        GitliRecyclerAdapter adapter=new GitliRecyclerAdapter(this,R.layout.item,lists.length);
+
+        adapter.setOnBackViewHolder(new OnBackViewHolder() {
+            @Override
+            public void backViewHolder(GitliViewHolder mViewHolder, int position) {
+                mViewHolder.getViewFromId(R.id.item_data,TextView.class).setText(lists[position]);
+            }
+
+            @Override
+            public void clickViewHolder(View currentView,int currentPosition) {
+
+                switch (currentPosition){
+                    case 0:
+                        ToolBarActivity.start(MainActivity.this);
+                        break;
+                    case 1:
+                        CardViewActivity.start(MainActivity.this);
+                        break;
+                    case 2:
+                        CoordLayoutActivity.start(MainActivity.this);
+                        break;
+                    case 3:
+                        SqliteActivity.start(MainActivity.this);
+                        break;
+                    case 4:
+                        BazierActivity.start(MainActivity.this);
+                        break;
+                    case 5:
+                        TestBezierActivity.start(MainActivity.this);
+                        break;
+                }
+            }
+        });
+        recyclerView.setAdapter(adapter);
+        LinearLayoutManager manager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        recyclerView.setLayoutManager(manager);
+
     }
 
 
-
-    @OnClick({R.id.toolBar, R.id.cardView, R.id.coordinator, R.id.sheet, R.id.network_urlconnection, R.id.network_httpurlconnection, R.id.show_evenBus, R.id.greeDao,R.id.bezier,R.id.testbezier})
-    public void onClick(View view) {
-
-        Map<String, String> params = initMap();
-
-        switch (view.getId()) {
-            case R.id.toolBar:
-                ToolBarActivity.start(this);
-                break;
-            case R.id.cardView:
-                CardViewActivity.start(this);
-                break;
-            case R.id.coordinator:
-                CoordLayoutActivity.start(this);
-                break;
-            case R.id.sheet:
-                SheetActivity.start(this);
-                break;
-            case R.id.network_urlconnection:
-
-                Log.v("MainActivity", "get println result is:" + params.get("telephone") + "  password:" + params.get("password"));
-                break;
-            case R.id.network_httpurlconnection:
-
-                Log.v("MainActivity", "get println result is:" + params.get("telephone") + "  password:" + params.get("password"));
-
-                break;
-            case R.id.greeDao:
-                SqliteActivity.start(this);
-                break;
-            case R.id.bezier:
-                BazierActivity.start(this);
-                break;
-            case R.id.testbezier:
-                TestBezierActivity.start(this);
-                break;
-
-        }
-    }
 
     private Map<String, String> initMap() {
         Map<String, String> paramsMap = new HashMap<>();
@@ -177,7 +180,7 @@ public class MainActivity extends BaseActivity implements NetWorkCondition, Perm
     public void MessageEventBus(Bitmap bitmap) {
 
 
-        loading_one.setImageBitmap(bitmap);
+//        loading_one.setImageBitmap(bitmap);
     }
 
 
@@ -213,12 +216,11 @@ public class MainActivity extends BaseActivity implements NetWorkCondition, Perm
     }
 
 
-    public void Crash(View view){
+    public void Crash(View view) {
         // 当我们传进去null的时候，程序会抛出异常，崩溃
         Log.e("TAG", null);
         Toast.makeText(this, "Hello", Toast.LENGTH_LONG).show();
     }
-
 
 
     @Override

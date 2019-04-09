@@ -13,20 +13,36 @@ import com.july.teacup.ImageUtils.load.GlideImageLoadInterface;
 import com.july.teacup.ImageUtils.load.ImageLoadUtils;
 import com.july.teacup.ImageUtils.imgbasics.ImgUtilsType;
 
-public class GitliViewHolder extends RecyclerView.ViewHolder {
-    private final View mItemView;
+public class GitliViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public final View mItemView;
     public TextView mIndexView;
     private GlideImageLoadInterface utilLoadImage;
+    private OnBackViewHolder mBackViewHolder;
 
+    /**
+     *  普通Item
+     * @param itemView
+     */
     public GitliViewHolder(@NonNull View itemView){
         super(itemView);
         mItemView=itemView;
+        mItemView.setOnClickListener(this);
     }
 
+    /**
+     *  当加入快速查找列时 使用的构造器
+     * @param itemView
+     * @param indexViewId   字母显示列
+     */
     public GitliViewHolder(@NonNull View itemView,int indexViewId) {
         super(itemView);
         mItemView = itemView;
         mIndexView =(TextView)itemView.findViewById(indexViewId);
+    }
+
+
+    public void registerClickEvent(OnBackViewHolder backViewHolder){
+        this.mBackViewHolder=backViewHolder;
     }
 
     public <T extends View> T getViewFromId(int resourceId, Class<T> typeClass) {
@@ -43,7 +59,6 @@ public class GitliViewHolder extends RecyclerView.ViewHolder {
         ImageView mImageView = mItemView.findViewById(resourceId);
 
         if (utilLoadImage==null){
-//            utilLoadImage=ImageLoadUtils.getInstance();
             utilLoadImage=TeaCupImage.getService(ImageLoadUtils.class);
         }
 
@@ -54,7 +69,6 @@ public class GitliViewHolder extends RecyclerView.ViewHolder {
         ImageView mImageView = mItemView.findViewById(resourceId);
 
         if (utilLoadImage==null){
-//            utilLoadImage=ImageLoadUtils.getInstance();
             utilLoadImage=TeaCupImage.getService(ImageLoadUtils.class);
         }
 
@@ -65,10 +79,15 @@ public class GitliViewHolder extends RecyclerView.ViewHolder {
         ImageView mImageView = mItemView.findViewById(resourceId);
 
         if (utilLoadImage==null){
-//            utilLoadImage=ImageLoadUtils.getInstance();
             utilLoadImage=TeaCupImage.getService(ImageLoadUtils.class);
         }
 
         utilLoadImage.ImageLoad(mContext,mImageView,url,errorPath,placePath);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        mBackViewHolder.clickViewHolder(v, (Integer) mItemView.getTag());
     }
 }

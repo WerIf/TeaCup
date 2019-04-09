@@ -53,6 +53,7 @@ dependencies {
     //SopHix
     implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.6'
     implementation 'org.jetbrains:annotations:15.0'
-
+    //material design
+    implementation 'com.android.support:design:28.0.0'
 
 }

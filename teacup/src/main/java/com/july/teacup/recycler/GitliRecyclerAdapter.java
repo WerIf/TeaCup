@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ *  普通Adapter
+ */
 public class GitliRecyclerAdapter extends RecyclerView.Adapter<GitliViewHolder> {
 
     private final Context mContext;
@@ -14,6 +17,7 @@ public class GitliRecyclerAdapter extends RecyclerView.Adapter<GitliViewHolder> 
     private int mResourceId;
 
     private OnBackViewHolder onBackViewHolder;
+    private GitliViewHolder viewHolder;
 
     public void setOnBackViewHolder(OnBackViewHolder onBackViewHolder) {
         this.onBackViewHolder = onBackViewHolder;
@@ -31,13 +35,17 @@ public class GitliRecyclerAdapter extends RecyclerView.Adapter<GitliViewHolder> 
         /**
          * 避免在layoutItem显示是尺寸不能正常显示
          */
-        View mView=LayoutInflater.from(mContext).inflate(mResourceId,null);
-        return new GitliViewHolder(mView);
+        View mView=LayoutInflater.from(mContext).inflate(mResourceId,viewGroup,false);
+        viewHolder=new GitliViewHolder(mView);
+        viewHolder.registerClickEvent(onBackViewHolder);
+        return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull GitliViewHolder gitliViewHolder, int position) {
+        gitliViewHolder.mItemView.setTag(position);
         onBackViewHolder.backViewHolder(gitliViewHolder,position);
+
     }
 
     @Override

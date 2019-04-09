@@ -21,6 +21,7 @@
         android:layout_marginLeft="@dimen/dp_50"
         app:TEdit_text="你好世界"
         app:TEdit_onFocus="@drawable/tea_edit_background"
+        android:inputType="number"
         />
 
 
@@ -29,18 +30,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <!--<com.july.teacup.view.RadarView-->
-        <!--android:id="@+id/radarView"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_margin="10dp"-->
-        <!--app:circleColor="#565cd6"-->
-        <!--app:circleNum="4"-->
-        <!--app:flicker="3"-->
-        <!--app:speed="5"-->
-        <!--app:sweepColor="#565cd6"-->
-        <!--app:showCross="true"-->
-        <!--app:raindropNum="4" />-->
 
     <com.july.teacup.view.RadarView
         android:id="@+id/radarView"
@@ -54,17 +43,29 @@
         app:showCross="true"
         app:showRaindrop="true"
         app:speed="4.0"
+        android:visibility="gone"
         app:sweepColor="@color/yellow"/>
 
     <Button
         android:id="@+id/stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:text="stop"/>
 
     <Button
         android:id="@+id/start_Launch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="start" />
+        android:text="start"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_100"
+        android:onClick="translate"
+        android:background="@mipmap/one"
+        android:transitionName="@string/trans"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
 </LinearLayout>

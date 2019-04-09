@@ -21,6 +21,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:foreground="@drawable/card_foreground">
         <ImageView
+            android:background="@mipmap/one"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </android.support.v7.widget.CardView>

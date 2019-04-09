@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 
 import com.july.teacup.annotation.autoknife.FindView;
 import com.july.teacup.basics.BaseActivity;
@@ -84,6 +85,11 @@ public class SqliteActivity extends BaseActivity {
                 Log.e("TAG", "println result position is:" + bean.getPath());
 
                 mViewHolder.setImageToView(SqliteActivity.this, R.id.item_img,bean.getPath());
+
+            }
+
+            @Override
+            public void clickViewHolder(View currentView, int currentPosition) {
 
             }
         });

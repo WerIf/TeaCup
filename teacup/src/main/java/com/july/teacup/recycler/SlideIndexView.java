@@ -1,4 +1,4 @@
-package com.july.teacup.slide;
+package com.july.teacup.recycler;
 
 import android.content.Context;
 import android.graphics.Canvas;
