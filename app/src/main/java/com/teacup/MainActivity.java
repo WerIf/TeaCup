@@ -46,7 +46,6 @@ import com.teacup.been.MessageEvent;
 import com.teacup.details.BazierActivity;
 import com.teacup.details.CardViewActivity;
 import com.teacup.details.CoordLayoutActivity;
-import com.teacup.details.SheetActivity;
 import com.teacup.details.SqliteActivity;
 import com.teacup.details.TestBezierActivity;
 import com.teacup.details.ToolBarActivity;
@@ -85,6 +84,7 @@ public class MainActivity extends Activity implements NetWorkCondition, Permissi
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         getWindow().setExitTransition(new Explode());
         setContentView(R.layout.activity_main);
+
 
         init();
     }

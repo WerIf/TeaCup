@@ -97,7 +97,5 @@ public class ToolBarActivity extends BaseActivity implements View.OnClickListene
 
 //        ActivityOptionsCompat options6 = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
 //        ActivityCompat.startActivity(this, new Intent(this, MaterialDesignTestActivity.class), options6.toBundle());
-//
-
     }
 }

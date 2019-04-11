@@ -23,9 +23,9 @@
 
         <ImageView
             android:id="@+id/head"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/timg"
+            android:layout_width="match_parent"
+            android:layout_height="290dp"
+            android:src="@mipmap/one"
             android:transitionName="@string/trans"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"/>
