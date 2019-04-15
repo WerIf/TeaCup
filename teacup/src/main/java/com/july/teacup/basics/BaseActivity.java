@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -16,6 +17,9 @@ import com.july.teacup.annotation.autoknife.FindKnifeProcess;
 import com.july.teacup.annotation.autowired.AutoWriedProcess;
 import com.july.teacup.bean.BaseBean;
 import com.july.teacup.click.EventListener;
+import com.july.teacup.fragment_bridge.BridgeManager;
+import com.july.teacup.fragment_bridge.BridgeNoParamNoResult;
+import com.july.teacup.fragment_bridge.BridgeWithResultOnly;
 import com.july.teacup.toast.ToastUtils;
 
 import org.json.JSONException;
@@ -173,5 +177,26 @@ public abstract class BaseActivity extends AppCompatActivity {
         view.setOnClickListener(new EventListener(this));
         return view;
     }
+
+//    public void setFunctionForFragment(String tag){
+//        FragmentManager fm=getSupportFragmentManager();
+//
+//        BaseFragment baseBridge= (BaseFragment) fm.findFragmentByTag(tag);
+//
+//        BridgeManager bridgeManager=BridgeManager.getInstance();
+//
+//        baseBridge.setBridgeManager(bridgeManager.addBridge(new BridgeNoParamNoResult(Tab1.INTERFACE) {
+//            @Override
+//            public void bridge() {
+//
+//                ToastUtils.makeText(BaseActivity.this,"调用了无参数接口",ToastUtils.LENGTH_LONG).show();
+//            }
+//        }).addBridge(new BridgeWithResultOnly<String>(Tab1.INTERFACE) {
+//            @Override
+//            public String bridge() {
+//                return null;
+//            }
+//        }));
+//    }
 
 }

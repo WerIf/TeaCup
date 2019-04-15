@@ -46,6 +46,7 @@ import com.teacup.been.MessageEvent;
 import com.teacup.details.BazierActivity;
 import com.teacup.details.CardViewActivity;
 import com.teacup.details.CoordLayoutActivity;
+import com.teacup.details.EventBusActivity;
 import com.teacup.details.SqliteActivity;
 import com.teacup.details.TestBezierActivity;
 import com.teacup.details.ToolBarActivity;
@@ -73,7 +74,8 @@ public class MainActivity extends Activity implements NetWorkCondition, Permissi
             "coordinator",
             "greendao",
             "bezier",
-            "bezier 测试"
+            "bezier 测试",
+            "fragment 测试"
     };
 
     RecyclerView recyclerView;
@@ -101,21 +103,6 @@ public class MainActivity extends Activity implements NetWorkCondition, Permissi
 
         PermissionHelper helper = new PermissionHelper(this, this);
         helper.requestPermissions();
-
-
-//        lambda.setText("程序员发现并解决了bug");
-//
-//
-//        lambda.setOnClickListener(
-//                view ->
-//                        GitLiDialog.getService(HintDialog.class, this)
-//                                .setTitle("HINT TITLE")
-//                                .setData("hello world")
-//                                .setOnClickAffirm("确认", view1 -> ToastUtils.makeText(MainActivity.this, "click sure", ToastUtils.LENGTH_LONG).show())
-//                                .setOnClickDisqualify("取消", view1 -> ToastUtils.makeText(MainActivity.this, "click cancel", ToastUtils.LENGTH_LONG).show())
-//                                .show()
-//        );
-
 
         initView();
     }
@@ -153,6 +140,9 @@ public class MainActivity extends Activity implements NetWorkCondition, Permissi
                     case 5:
                         TestBezierActivity.start(MainActivity.this);
                         break;
+                    case 6:
+                        EventBusActivity.start(MainActivity.this);
+                        break;
                 }
             }
         });
@@ -178,16 +168,12 @@ public class MainActivity extends Activity implements NetWorkCondition, Permissi
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void MessageEventBus(Bitmap bitmap) {
-
-
 //        loading_one.setImageBitmap(bitmap);
     }
 
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void MessageEventBus(String string) {
-
-
         Log.e("TAG", "println result is:" + string);
     }
 
@@ -199,7 +185,6 @@ public class MainActivity extends Activity implements NetWorkCondition, Permissi
 
     @Override
     public void onSucceed(Object object) {
-//        Log.e("TAG","println result is:"+(bitmap==null));
         Bitmap bitmap = (Bitmap) object;
         if (bitmap == null) return;
         EventBus.getDefault().post(bitmap);

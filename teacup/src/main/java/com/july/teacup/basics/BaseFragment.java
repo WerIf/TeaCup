@@ -10,13 +10,15 @@ import android.view.ViewGroup;
 
 import com.july.teacup.annotation.autoknife.FindKnifeProcess;
 import com.july.teacup.annotation.autowired.AutoWriedProcess;
-
+import com.july.teacup.fragment_bridge.BridgeManager;
 
 
 public abstract class BaseFragment extends Fragment {
 
     public static final String TAG=BaseFragment.class.getSimpleName();
     private View mRootView;
+
+
 
     @Nullable
     @Override
@@ -31,7 +33,6 @@ public abstract class BaseFragment extends Fragment {
     public abstract int getLayoutResId();
 
     protected abstract void init(Bundle savedInstanceState);
-
 
 
 }
