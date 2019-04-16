@@ -1,6 +1,7 @@
 package com.july.teacup.fragment_bridge;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -95,7 +96,11 @@ public class BridgeManager {
             return;
         }
 
+        Log.e("TAG","println result tag 2");
+
         if (!TextUtils.isEmpty(mBridgeNoParamNoResult.get(bridgeName).interfaceName)) {
+
+            Log.e("TAG","println result tag 3");
 
             BridgeNoParamNoResult nPnR = mBridgeNoParamNoResult.get(bridgeName);
 

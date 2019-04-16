@@ -10,8 +10,8 @@ android {
         debug {
             keyAlias 'july'
             keyPassword 'licong'
-            storeFile file('D:/BaiduNetdiskDownload/july.jks')
-            storePassword '199612'
+            storeFile file('E:/BaiduNetdiskDownload/july.jks')
+            storePassword 'yemylove'
         }
         release {
             keyAlias 'july'
@@ -61,8 +61,14 @@ android {
                 outputFileName = "${appName}-v${variant.versionName}.apk"
             }
     }
+
 }
 
+repositories {
+    maven {
+        url "http://maven.aliyun.com/nexus/content/repositories/releases"
+    }
+}
 greendao {
     schemaVersion 1 //数据库版本号
     daoPackage 'com.teacup.db'// 设置DaoMaster、DaoSession、Dao 包名
@@ -83,5 +89,8 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
     implementation 'org.greenrobot:eventbus:3.1.1'
     implementation 'org.greenrobot:greendao:3.2.0'
+    // Updated upstream
     implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.6'
+    //
+    implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.8'
 }

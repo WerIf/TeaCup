@@ -42,6 +42,7 @@ import com.teacup.details.TestBezierActivity;
 import com.teacup.details.ToolBarActivity;
 
 
+
 public class MainActivity extends Activity implements NetWorkCondition, PermissionInterface {
 
 

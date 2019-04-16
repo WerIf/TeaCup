@@ -3,8 +3,11 @@ package com.teacup.fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.util.ArrayMap;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
+import com.july.teacup.annotation.autoknife.OnClick;
 import com.july.teacup.basics.BaseActivity;
 import com.july.teacup.basics.BaseFragment;
 import com.july.teacup.bean.BaseBean;
@@ -33,20 +36,20 @@ public class Tab1 extends BaseFragment implements DataContract.View {
     @Override
     protected void init(Bundle savedInstanceState) {
 
-        textView=getCurrentView().findViewById(R.id.click);
-        textView.setOnClickListener(v -> {
-           if(bridgeManager!=null){
-               bridgeManager.invoke(INTERFACE);
-           }else{
-               ToastUtils.makeText(getContext(),"bridgeManager is null").show();
-           }
-        });
-
         DataContract.Presenter presenter=new DataPresenter(this);
         ((DataPresenter) presenter).start("",new HashMap<>());
+    }
 
+    @OnClick(R.id.click)
+    public void onClick(View view){
 
+        Log.e("TAG","println result tag 1");
 
+        if(bridgeManager!=null){
+            bridgeManager.invoke(INTERFACE);
+        }else{
+            ToastUtils.makeText(getContext(),"bridgeManager is null").show();
+        }
     }
 
 

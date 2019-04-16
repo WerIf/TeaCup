@@ -67,6 +67,9 @@ public class EventBusActivity extends BaseActivity {
         bridgeManager.addBridge(new BridgeNoParamNoResult(Tab1.INTERFACE) {
             @Override
             public void bridge() {
+
+                Log.e("TAG","println result tag 4");
+
                 ToastUtils.makeText(EventBusActivity.this, "调用了无参数接口", ToastUtils.LENGTH_LONG).show();
 
                 tab2.onDataChangeListener(new MessageEvent("Teacup","23"));
@@ -118,35 +121,34 @@ public class EventBusActivity extends BaseActivity {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transcation = manager.beginTransaction();
 
+        ToastUtils.makeText(this, "click :" + index).show();
+
+        if (tab1 == null) {
+            tab1 = new Tab1();
+            transcation.add(R.id.frameLayout, tab1, Tab1.INTERFACE);
+        }
+
+        if (tab2 == null) {
+            tab2 = new Tab2();
+            transcation.add(R.id.frameLayout, tab2, Tab2.INTERFACE);
+        }
+
+        if (tab3 == null) {
+            tab3 = new Tab3();
+            transcation.add(R.id.frameLayout, tab3, Tab3.INTERFACE);
+        }
 
         Hide(transcation);
 
-        ToastUtils.makeText(this, "click :" + index).show();
-
         switch (index) {
             case 1:
-                if (tab1 == null) {
-                    tab1 = new Tab1();
-                    transcation.add(R.id.frameLayout, tab1, Tab1.INTERFACE);
-                }else{
                     transcation.show(tab1);
-                }
                 break;
             case 2:
-                if (tab2 == null) {
-                    tab2 = new Tab2();
-                    transcation.add(R.id.frameLayout, tab2, Tab2.INTERFACE);
-                }else{
                     transcation.show(tab2);
-                }
                 break;
             case 3:
-                if (tab3 == null) {
-                    tab3 = new Tab3();
-                    transcation.add(R.id.frameLayout, tab3, Tab3.INTERFACE);
-                }else{
                     transcation.show(tab3);
-                }
                 break;
         }
 

@@ -67,6 +67,4 @@ public abstract class BaseFragment  extends Fragment implements FragmentDataList
      */
     public void onBridge(BaseActivity baseActivity){ }
 
-
-
 }
