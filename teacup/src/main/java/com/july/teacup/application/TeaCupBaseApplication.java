@@ -14,6 +14,9 @@ import com.taobao.sophix.listener.PatchLoadStatusListener;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
+/**
+ * hotfix 热更新案例
+ */
 public class TeaCupBaseApplication extends Application {
 
 

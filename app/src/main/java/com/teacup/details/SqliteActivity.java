@@ -11,6 +11,7 @@ import android.view.View;
 
 import com.july.teacup.annotation.autoknife.FindView;
 import com.july.teacup.basics.BaseActivity;
+import com.july.teacup.fragment_bridge.BridgeManager;
 import com.july.teacup.recycler.GitliRecyclerAdapter;
 import com.july.teacup.recycler.GitliViewHolder;
 import com.july.teacup.recycler.OnBackViewHolder;
@@ -73,6 +74,11 @@ public class SqliteActivity extends BaseActivity {
         }
 
         initData();
+    }
+
+    @Override
+    public BridgeManager backBaseBridge(BridgeManager bridgeManager) {
+        return null;
     }
 
     public void initData() {

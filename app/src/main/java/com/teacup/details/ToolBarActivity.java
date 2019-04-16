@@ -15,6 +15,7 @@ import android.widget.Button;
 
 import com.july.teacup.annotation.autoknife.FindView;
 import com.july.teacup.basics.BaseActivity;
+import com.july.teacup.fragment_bridge.BridgeManager;
 import com.july.teacup.view.RadarView;
 import com.teacup.R;
 
@@ -60,6 +61,11 @@ public class ToolBarActivity extends BaseActivity implements View.OnClickListene
 //        stop.setOnClickListener(v -> radarView.stop());
 //
 //        launch.setOnClickListener(v -> radarView.start());
+    }
+
+    @Override
+    public BridgeManager backBaseBridge(BridgeManager bridgeManager) {
+        return null;
     }
 
     @Override

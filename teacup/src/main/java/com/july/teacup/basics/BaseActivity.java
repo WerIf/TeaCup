@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 
 import com.google.gson.Gson;
@@ -17,6 +18,7 @@ import com.july.teacup.annotation.autoknife.FindKnifeProcess;
 import com.july.teacup.annotation.autowired.AutoWriedProcess;
 import com.july.teacup.bean.BaseBean;
 import com.july.teacup.click.EventListener;
+import com.july.teacup.fragment_bridge.BaseBridge;
 import com.july.teacup.fragment_bridge.BridgeManager;
 import com.july.teacup.fragment_bridge.BridgeNoParamNoResult;
 import com.july.teacup.fragment_bridge.BridgeWithResultOnly;
@@ -178,25 +180,27 @@ public abstract class BaseActivity extends AppCompatActivity {
         return view;
     }
 
-//    public void setFunctionForFragment(String tag){
-//        FragmentManager fm=getSupportFragmentManager();
-//
-//        BaseFragment baseBridge= (BaseFragment) fm.findFragmentByTag(tag);
-//
-//        BridgeManager bridgeManager=BridgeManager.getInstance();
-//
-//        baseBridge.setBridgeManager(bridgeManager.addBridge(new BridgeNoParamNoResult(Tab1.INTERFACE) {
-//            @Override
-//            public void bridge() {
-//
-//                ToastUtils.makeText(BaseActivity.this,"调用了无参数接口",ToastUtils.LENGTH_LONG).show();
-//            }
-//        }).addBridge(new BridgeWithResultOnly<String>(Tab1.INTERFACE) {
-//            @Override
-//            public String bridge() {
-//                return null;
-//            }
-//        }));
-//    }
+    /**
+     *  Fragment和Activity交互传递数据
+     * @param tag
+     * @param c
+     * @param <TargetFragment>
+     */
+    public <TargetFragment extends BaseFragment> void setFunctionForFragment(String tag, TargetFragment c){
+
+
+        BridgeManager bridgeManager=BridgeManager.getInstance();
+
+        Log.e("BaseActivity","judge bridgeManager is null :"+(bridgeManager==null)+"  name:"+c.getClass().getName());
+
+        c.setBridgeManager(backBaseBridge(bridgeManager));
+    }
+
+    /**
+     *  数据传递的具体实现对象
+     * @param bridgeManager
+     * @return
+     */
+    public abstract BridgeManager backBaseBridge(BridgeManager bridgeManager);
 
 }

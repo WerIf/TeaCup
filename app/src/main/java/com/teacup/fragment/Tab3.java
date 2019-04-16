@@ -1,28 +1,44 @@
 package com.teacup.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v4.app.FragmentManager;
 
+
+import com.july.teacup.basics.BaseActivity;
+import com.july.teacup.basics.BaseFragment;
+import com.july.teacup.bean.BaseBean;
 import com.teacup.R;
 
-public class Tab3 extends Fragment {
+public class Tab3 extends BaseFragment {
 
-    public static String INTERFACE = Tab1.class.getName();
+    public static String INTERFACE = Tab3.class.getName();
 
-    @Nullable
+
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        View view=inflater.inflate(R.layout.layout_tab3,null);
-        return view;
+    public int getLayoutResId() {
+        return R.layout.layout_tab3;
     }
 
-    public interface T3Interface{
-        void onT3FragmentInteraction(String url);
+    @Override
+    protected void init(Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    public void onBridge(BaseActivity baseActivity) {
+        super.onBridge(baseActivity);
+
+        FragmentManager fm=baseActivity.getSupportFragmentManager();
+
+        Tab3 targetFragment= (Tab3) fm.findFragmentByTag(getTag());
+
+        baseActivity.setFunctionForFragment(INTERFACE,targetFragment);
+    }
+
+
+    @Override
+    public <T extends BaseBean> void onDataChangeListener(T t) {
+
     }
 }

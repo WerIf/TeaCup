@@ -1,6 +1,8 @@
-package com.teacup.been;
+package com.teacup.bean;
 
-public class MessageEvent {
+import com.july.teacup.bean.BaseBean;
+
+public class MessageEvent extends BaseBean {
     private String name;
     private String age;
 

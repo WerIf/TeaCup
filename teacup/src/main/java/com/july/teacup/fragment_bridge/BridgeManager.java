@@ -5,10 +5,16 @@ import android.text.TextUtils;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Activity和Fragment链接的管理bean
+ */
 public class BridgeManager {
 
     private static BridgeManager bridgeManager;
 
+    /**
+     * 创建管理对象时 实例化4中对象的管理集合对象
+     */
     public BridgeManager() {
 
         mBridgeNoParamNoResult = new HashMap<>();
@@ -17,6 +23,10 @@ public class BridgeManager {
         mBridgeWithParamWithResult = new HashMap<>();
     }
 
+    /**
+     *  是使用单利模式管理管理对象
+     * @return
+     */
     public static BridgeManager getInstance() {
 
         if (bridgeManager == null) {
@@ -36,21 +46,41 @@ public class BridgeManager {
     private Map<String, BridgeWithParamWithResult> mBridgeWithParamWithResult;
 
 
+    /**
+     *  创建无参数无返回值的Bridge
+     * @param mBridge
+     * @return
+     */
     public BridgeManager addBridge(BridgeNoParamNoResult mBridge) {
         mBridgeNoParamNoResult.put(mBridge.interfaceName, mBridge);
         return this;
     }
 
+    /**
+     *  创建仅有参数的Bridge
+     * @param mBridge
+     * @return
+     */
     public BridgeManager addBridge(BridgeWithParamOnly mBridge) {
         mBridgeWithParamOnly.put(mBridge.interfaceName, mBridge);
         return this;
     }
 
+    /**
+     *  创建仅有返回值的Bridge
+     * @param mBridge
+     * @return
+     */
     public BridgeManager addBridge(BridgeWithResultOnly mBridge) {
         mBridgeWithResultOnly.put(mBridge.interfaceName, mBridge);
         return this;
     }
 
+    /**
+     *  创建有参数和返回值的Bridge
+     * @param mBridge
+     * @return
+     */
     public BridgeManager addBridge(BridgeWithParamWithResult mBridge) {
         mBridgeWithParamWithResult.put(mBridge.interfaceName, mBridge);
         return this;

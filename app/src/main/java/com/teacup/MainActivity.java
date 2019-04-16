@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.graphics.Bitmap;
 
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Bundle;
@@ -14,18 +13,10 @@ import android.transition.Explode;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.july.teacup.annotation.autoknife.FindView;
-import com.july.teacup.annotation.autoknife.OnClick;
-import com.july.teacup.basics.BaseActivity;
 import com.july.teacup.basics.NetWorkCondition;
-import com.july.teacup.dialog.GitLiDialog;
-import com.july.teacup.dialog.details.HintDialog;
-import com.july.teacup.hotupdate.DexManager;
 import com.july.teacup.permission.PermissionHelper;
 import com.july.teacup.permission.PermissionInterface;
 import com.july.teacup.recycler.GitliRecyclerAdapter;
@@ -41,8 +32,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-import com.taobao.sophix.SophixManager;
-import com.teacup.been.MessageEvent;
+import com.teacup.bean.MessageEvent;
 import com.teacup.details.BazierActivity;
 import com.teacup.details.CardViewActivity;
 import com.teacup.details.CoordLayoutActivity;

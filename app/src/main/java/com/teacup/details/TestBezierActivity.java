@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.july.teacup.annotation.autoknife.FindView;
 import com.july.teacup.basics.BaseActivity;
+import com.july.teacup.fragment_bridge.BridgeManager;
 import com.july.teacup.toast.ToastUtils;
 import com.july.teacup.view.BubbleView;
 import com.july.teacup.view.CircleBezierView;
@@ -43,6 +44,11 @@ public class TestBezierActivity extends BaseActivity implements BubbleView.OnBub
         mDragBubbleView = findViewById(R.id.dragBubbleView);
         mDragBubbleView.setText("99+");
         mDragBubbleView.setOnBubbleStateListener(this);
+    }
+
+    @Override
+    public BridgeManager backBaseBridge(BridgeManager bridgeManager) {
+        return null;
     }
 
     public void start(View view) {

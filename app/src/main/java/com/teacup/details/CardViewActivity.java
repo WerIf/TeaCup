@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.july.teacup.annotation.autoknife.FindView;
 import com.july.teacup.basics.BaseActivity;
+import com.july.teacup.fragment_bridge.BridgeManager;
 import com.july.teacup.view.WaveView;
 import com.teacup.R;
 
@@ -32,6 +33,11 @@ public class CardViewActivity extends BaseActivity {
     @Override
     public void init(Bundle savedInstanceState) {
 
+    }
+
+    @Override
+    public BridgeManager backBaseBridge(BridgeManager bridgeManager) {
+        return null;
     }
 
     @Override

@@ -11,6 +11,7 @@ import com.july.teacup.annotation.autoknife.FindView;
 import com.july.teacup.annotation.autoknife.OnClick;
 import com.july.teacup.basics.BaseActivity;
 import com.july.teacup.click.EventListener;
+import com.july.teacup.fragment_bridge.BridgeManager;
 import com.july.teacup.toast.ToastUtils;
 import com.teacup.R;
 
@@ -34,6 +35,11 @@ public class MaterialDesignTestActivity extends BaseActivity {
     public void init(Bundle savedInstanceState) {
 
         head.setOnClickListener(new EventListener(this));
+    }
+
+    @Override
+    public BridgeManager backBaseBridge(BridgeManager bridgeManager) {
+        return null;
     }
 
     @OnClick({R.id.head})

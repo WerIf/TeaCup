@@ -17,6 +17,7 @@ import com.july.teacup.ImageUtils.load.ImageLoadUtils;
 import com.july.teacup.adaptive.NavigationBar;
 import com.july.teacup.annotation.autoknife.FindView;
 import com.july.teacup.basics.BaseActivity;
+import com.july.teacup.fragment_bridge.BridgeManager;
 import com.teacup.R;
 
 
@@ -53,6 +54,11 @@ public class CoordLayoutActivity extends BaseActivity {
         utils.ImageLoad(this, backdrop, "https://graph.baidu.com/resource/102fda281f5ea56e567b701553845595.jpg");
 
 
+    }
+
+    @Override
+    public BridgeManager backBaseBridge(BridgeManager bridgeManager) {
+        return null;
     }
 
     @Override

@@ -16,6 +16,7 @@ import android.view.View;
 
 import com.july.teacup.annotation.autoknife.FindView;
 import com.july.teacup.basics.BaseActivity;
+import com.july.teacup.fragment_bridge.BridgeManager;
 import com.teacup.R;
 import com.teacup.fragment.Tab1;
 import com.teacup.fragment.Tab2;
@@ -78,6 +79,11 @@ public class BazierActivity extends BaseActivity
         mTableLayout.setupWithViewPager(mViewPager);
 
 
+    }
+
+    @Override
+    public BridgeManager backBaseBridge(BridgeManager bridgeManager) {
+        return null;
     }
 
     public void onClick(View view){

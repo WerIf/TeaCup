@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import com.july.teacup.annotation.autoknife.FindView;
 import com.july.teacup.annotation.autoknife.OnClick;
 import com.july.teacup.basics.BaseActivity;
+import com.july.teacup.fragment_bridge.BridgeManager;
 import com.july.teacup.toast.ToastUtils;
 import com.teacup.R;
 
@@ -58,6 +59,11 @@ public class SheetActivity extends BaseActivity {
             }
         });
 
+    }
+
+    @Override
+    public BridgeManager backBaseBridge(BridgeManager bridgeManager) {
+        return null;
     }
 
     @Override

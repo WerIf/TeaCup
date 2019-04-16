@@ -1,61 +1,78 @@
 package com.teacup.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v4.app.FragmentManager;
+import android.util.ArrayMap;
 import android.widget.TextView;
 
-import com.july.teacup.annotation.autoknife.OnClick;
+import com.july.teacup.basics.BaseActivity;
 import com.july.teacup.basics.BaseFragment;
+import com.july.teacup.bean.BaseBean;
 import com.july.teacup.fragment_bridge.BridgeManager;
 import com.july.teacup.toast.ToastUtils;
 import com.teacup.R;
-import com.teacup.details.EventBusActivity;
+import com.teacup.fragment.contract.DataContract;
+import com.teacup.fragment.presenter.DataPresenter;
 
-public class Tab1 extends Fragment {
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public class Tab1 extends BaseFragment implements DataContract.View {
 
     public static String INTERFACE = Tab1.class.getName();
 
-    protected BridgeManager bridgeManager;
-
-    public void setBridgeManager(BridgeManager bridgeManager) {
-        this.bridgeManager = bridgeManager;
-    }
-
     TextView textView;
 
-
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public int getLayoutResId() {
+        return R.layout.tab1;
+    }
 
-        View view=inflater.inflate(R.layout.tab1,null);
+    @Override
+    protected void init(Bundle savedInstanceState) {
 
-        textView=view.findViewById(R.id.click);
+        textView=getCurrentView().findViewById(R.id.click);
         textView.setOnClickListener(v -> {
-//            ToastUtils.makeText(getContext(),"click button",ToastUtils.LENGTH_LONG).show();
-
-            bridgeManager.invoke(INTERFACE);
+           if(bridgeManager!=null){
+               bridgeManager.invoke(INTERFACE);
+           }else{
+               ToastUtils.makeText(getContext(),"bridgeManager is null").show();
+           }
         });
-        return view;
+
+        DataContract.Presenter presenter=new DataPresenter(this);
+        ((DataPresenter) presenter).start("",new HashMap<>());
+
+
+
     }
 
 
+    @Override
+    public void onBridge(BaseActivity baseActivity) {
+        super.onBridge(baseActivity);
 
+        FragmentManager fm=baseActivity.getSupportFragmentManager();
 
+        Tab1 targetFragment= (Tab1) fm.findFragmentByTag(getTag());
+
+        baseActivity.setFunctionForFragment(INTERFACE,targetFragment);
+    }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    public <T extends BaseBean> void onDataChangeListener(T t) {
 
-        if (context instanceof EventBusActivity) {
-            EventBusActivity busActivity = (EventBusActivity) context;
-            busActivity.setFunctionForFragment(getTag());
-        }
+    }
+
+    @Override
+    public void success() {
+
+    }
+
+    @Override
+    public void failed() {
+
     }
 }
