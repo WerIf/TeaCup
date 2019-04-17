@@ -5,18 +5,7 @@ def appName = "GitLiJar"
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-
-    signingConfigs {
-        debug {
-        }
-        release {
-            keyAlias 'july'
-            keyPassword 'licong'
-            storeFile file('D:/BaiduNetdiskDownload/july.jks')
-            storePassword '199612'
-        }
-    }
-
+    
     defaultConfig {
         applicationId rootProject.ext.applicationId
         minSdkVersion rootProject.ext.minSdkVersion
