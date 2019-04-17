@@ -5,7 +5,7 @@ def appName = "GitLiJar"
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    
+
     defaultConfig {
         applicationId rootProject.ext.applicationId
         minSdkVersion rootProject.ext.minSdkVersion
