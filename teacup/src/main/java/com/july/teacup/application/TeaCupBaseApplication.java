@@ -1,6 +1,9 @@
 package com.july.teacup.application;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 
 
 /**
@@ -94,10 +97,10 @@ public class TeaCupBaseApplication extends Application {
 //    }
 //
 //
-//    private String backVersionName(Context context) throws PackageManager.NameNotFoundException {
-//        PackageManager packageManager = context.getPackageManager();
-//        PackageInfo packageInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
-//        return packageInfo.versionName;
-//    }
+    private String backVersionName(Context context) throws PackageManager.NameNotFoundException {
+        PackageManager packageManager = context.getPackageManager();
+        PackageInfo packageInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
+        return packageInfo.versionName;
+    }
 
 }
