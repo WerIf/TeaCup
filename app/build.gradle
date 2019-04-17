@@ -10,8 +10,8 @@ android {
         debug {
             keyAlias 'july'
             keyPassword 'licong'
-            storeFile file('E:/BaiduNetdiskDownload/july.jks')
-            storePassword 'yemylove'
+            storeFile file('D:/BaiduNetdiskDownload/july.jks')
+            storePassword '199612'
         }
         release {
             keyAlias 'july'
