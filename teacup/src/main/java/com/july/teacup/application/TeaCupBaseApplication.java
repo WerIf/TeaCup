@@ -76,39 +76,6 @@ public class TeaCupBaseApplication extends Application {
      * 这个值也可以通过adb shell getprop | grep ro.product.model取得。sdkVersionInt就是该机型的Android版本，也就是Build.VERSION.SDK_INT，
      * 若设为0，则对应该机型所有安卓版本。目前控制台也可以直接设置机型黑名单，更加灵活。
      */
-    protected void initSophix() {
-        String appVersion = "1.0";
-        try {
-            appVersion = backVersionName(this);
-        } catch (Exception e) {
-        }
-        SophixManager instance = SophixManager.getInstance();
-        instance.setContext(this)
-                .setAppVersion(appVersion)
-                .setSecretMetaData(null, null, null)
-                .setEnableDebug(true)
-                .setEnableFullLog()
-                .setPatchLoadStatusStub(new PatchLoadStatusListener() {
-                    @Override
-                    public void onLoad(final int mode, final int code, final String info, final int handlePatchVersion) {
-                        if (code == PatchStatus.CODE_LOAD_SUCCESS) {
-                        } else if (code == PatchStatus.CODE_LOAD_RELAUNCH) {
-                            // 如果需要在后台重启，建议此处用SharePreference保存状态。
-                        }
-                        String msg = new StringBuilder("").append("Mode:").append(mode)
-                                .append(" Code:").append(code)
-                                .append(" Info:").append(info)
-                                .append(" HandlePatchVersion:").append(handlePatchVersion).toString();
-                        Log.e("----", msg.toString());
-                    }
-                }).initialize();
-    }
-
-
-    private String backVersionName(Context context) throws PackageManager.NameNotFoundException {
-        PackageManager packageManager = context.getPackageManager();
-        PackageInfo packageInfo = packageManager.getPackageInfo(context.getPackageName(), 0);
-        return packageInfo.versionName;
-    }
+ 
 
 }
