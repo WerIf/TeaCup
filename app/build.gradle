@@ -8,10 +8,6 @@ android {
 
     signingConfigs {
         debug {
-            keyAlias 'july'
-            keyPassword 'licong'
-            storeFile file('D:/BaiduNetdiskDownload/july.jks')
-            storePassword '199612'
         }
         release {
             keyAlias 'july'
