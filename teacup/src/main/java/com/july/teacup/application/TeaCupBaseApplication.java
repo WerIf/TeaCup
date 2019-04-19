@@ -102,6 +102,7 @@ public class TeaCupBaseApplication extends Application {
 //    }
 
 
+
     private String backVersionName(Context context) throws PackageManager.NameNotFoundException {
         PackageManager packageManager = context.getPackageManager();
         PackageInfo packageInfo = packageManager.getPackageInfo(context.getPackageName(), 0);

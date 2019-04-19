@@ -4,6 +4,8 @@ import android.Manifest;
 import android.app.Activity;
 import android.graphics.Bitmap;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.transition.Explode;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,7 +45,6 @@ import com.teacup.details.TestBezierActivity;
 import com.teacup.details.ToolBarActivity;
 
 
-
 public class MainActivity extends Activity implements NetWorkCondition, PermissionInterface {
 
 
@@ -59,7 +61,7 @@ public class MainActivity extends Activity implements NetWorkCondition, Permissi
         }
     };
 
-    private String[] lists=new String[]{
+    private String[] lists = new String[]{
             "toolbar",
             "cardView",
             "coordinator",
@@ -72,10 +74,12 @@ public class MainActivity extends Activity implements NetWorkCondition, Permissi
     RecyclerView recyclerView;
 
     @Override
-    protected void onCreate( Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
-        getWindow().setExitTransition(new Explode());
+//        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+//        getWindow().setExitTransition(new Explode());
+
+//        initWindow();
         setContentView(R.layout.activity_main);
 
 
@@ -83,11 +87,24 @@ public class MainActivity extends Activity implements NetWorkCondition, Permissi
     }
 
 
+    private void initWindow() {
+        getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
+            window.setNavigationBarColor(Color.TRANSPARENT);
+        }
+
+    }
 
 
     public void init() {
 
-        recyclerView=findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView);
 
         EventBus.getDefault().register(this);
 
@@ -101,18 +118,18 @@ public class MainActivity extends Activity implements NetWorkCondition, Permissi
     private void initView() {
 //        evenBus.setOnClickListener(view -> EventBus.getDefault().post(new MessageEvent("gitly", "15")));
 
-        GitliRecyclerAdapter adapter=new GitliRecyclerAdapter(this,R.layout.item,lists.length);
+        GitliRecyclerAdapter adapter = new GitliRecyclerAdapter(this, R.layout.item, lists.length);
 
         adapter.setOnBackViewHolder(new OnBackViewHolder() {
             @Override
             public void backViewHolder(GitliViewHolder mViewHolder, int position) {
-                mViewHolder.getViewFromId(R.id.item_data,TextView.class).setText(lists[position]);
+                mViewHolder.getViewFromId(R.id.item_data, TextView.class).setText(lists[position]);
             }
 
             @Override
-            public void clickViewHolder(View currentView,int currentPosition) {
+            public void clickViewHolder(View currentView, int currentPosition) {
 
-                switch (currentPosition){
+                switch (currentPosition) {
                     case 0:
                         ToolBarActivity.start(MainActivity.this);
                         break;
@@ -138,11 +155,10 @@ public class MainActivity extends Activity implements NetWorkCondition, Permissi
             }
         });
         recyclerView.setAdapter(adapter);
-        LinearLayoutManager manager=new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
 
     }
-
 
 
     private Map<String, String> initMap() {

@@ -7,12 +7,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.july.teacup.annotation.autoknife.FindView;
 import com.july.teacup.annotation.autoknife.OnClick;
 import com.july.teacup.basics.BaseActivity;
 import com.july.teacup.basics.BaseFragment;
 import com.july.teacup.bean.BaseBean;
 import com.july.teacup.fragment_bridge.BridgeManager;
 import com.july.teacup.toast.ToastUtils;
+import com.july.teacup.view.CircleImageView;
 import com.teacup.R;
 import com.teacup.fragment.contract.DataContract;
 import com.teacup.fragment.presenter.DataPresenter;
@@ -28,6 +31,9 @@ public class Tab1 extends BaseFragment implements DataContract.View {
 
     TextView textView;
 
+    @FindView(R.id.image)
+    CircleImageView image;
+
     @Override
     public int getLayoutResId() {
         return R.layout.tab1;
@@ -38,6 +44,10 @@ public class Tab1 extends BaseFragment implements DataContract.View {
 
         DataContract.Presenter presenter=new DataPresenter(this);
         ((DataPresenter) presenter).start("",new HashMap<>());
+
+        Glide.with(getContext())
+                .load( "http://s7.sinaimg.cn/mw690/001m1Utdzy6ZLnVyRxQe6&690")
+                .into(image);
     }
 
     @OnClick(R.id.click)

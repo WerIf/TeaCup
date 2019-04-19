@@ -41,13 +41,13 @@ public class TeaEditText extends RelativeLayout implements View.OnTouchListener,
         super(context, attrs, defStyleAttr);
 
 
-        View view=LayoutInflater.from(context).inflate(R.layout.tea_edit_layout,this);
+        View view = LayoutInflater.from(context).inflate(R.layout.tea_edit_layout, this);
 
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TeaEditText,0, 0);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TeaEditText, 0, 0);
         try {
             hintText = typedArray.getString(R.styleable.TeaEditText_TEdit_text);
-            onFocusBack=typedArray.getResourceId(R.styleable.TeaEditText_TEdit_onFocus,0);
-//            inputType=typedArray.getInteger(R.styleable.TeaEditText_inputType,0);
+            onFocusBack = typedArray.getResourceId(R.styleable.TeaEditText_TEdit_onFocus, 0);
+            inputType = typedArray.getInteger(R.styleable.TeaEditText_android_inputType, 0);
         } finally {
             typedArray.recycle();
         }
@@ -57,10 +57,10 @@ public class TeaEditText extends RelativeLayout implements View.OnTouchListener,
 
     private void initView() {
 
-        editText=findViewById(R.id.teaEdit);
+        editText = findViewById(R.id.teaEdit);
 
-        drawable=getResources().getDrawable(R.mipmap.icon_cancel);
-        drawable.setBounds(0,0,45,45);
+        drawable = getResources().getDrawable(R.mipmap.icon_cancel);
+        drawable.setBounds(0, 0, 45, 45);
 
         editText.setOnTouchListener(this);
 
@@ -70,10 +70,11 @@ public class TeaEditText extends RelativeLayout implements View.OnTouchListener,
 
         editText.setHint(hintText);
 
-        editText.setInputType(inputType);
+        if (inputType != 0) {
+            editText.setInputType(inputType);
+        }
 
-        if(onFocusBack!=0)
-        {
+        if (onFocusBack != 0) {
             editText.setBackground(getResources().getDrawable(onFocusBack));
         }
     }
@@ -82,18 +83,22 @@ public class TeaEditText extends RelativeLayout implements View.OnTouchListener,
     public boolean onTouch(View view, MotionEvent motionEvent) {
         Drawable drawable = editText.getCompoundDrawablesRelative()[2];
         //如果drawableEnd 图片为空 不作处理
-        if(drawable==null)return false;
+        if (drawable == null) return false;
         //如果不是按下事件 不作处理
         if (motionEvent.getAction() != MotionEvent.ACTION_UP)
             return false;
 
         if (motionEvent.getX() > editText.getWidth()
                 - editText.getPaddingRight()
-                - drawable.getIntrinsicWidth()){
+                - drawable.getIntrinsicWidth()) {
             editText.setText("");
         }
 
         return false;
+    }
+
+    public boolean isInputEmpty() {
+        return TextUtils.isEmpty(editText.getText().toString());
     }
 
     @Override
@@ -109,21 +114,21 @@ public class TeaEditText extends RelativeLayout implements View.OnTouchListener,
     @Override
     public void afterTextChanged(Editable editable) {
 
-        if(TextUtils.isEmpty(editText.getText()))
-            editText.setCompoundDrawablesRelative(null,null,null,null);
+        if (TextUtils.isEmpty(editText.getText()))
+            editText.setCompoundDrawablesRelative(null, null, null, null);
         else
-            editText.setCompoundDrawablesRelative(null,null,drawable,null);
+            editText.setCompoundDrawablesRelative(null, null, drawable, null);
     }
 
     @Override
     public void onFocusChange(View view, boolean b) {
 
-//        if(b){
-//            //弹出输入键盘
-//            InputMethodManager inputManager = (InputMethodManager) editText
-//                    .getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-//            inputManager.showSoftInput(editText, 0);
-//        }
+        if (b) {
+            //弹出输入键盘
+            InputMethodManager inputManager = (InputMethodManager) editText
+                    .getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            inputManager.showSoftInput(editText, 0);
+        }
 
     }
 
