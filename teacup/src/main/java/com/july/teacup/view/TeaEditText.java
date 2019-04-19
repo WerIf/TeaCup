@@ -101,6 +101,14 @@ public class TeaEditText extends RelativeLayout implements View.OnTouchListener,
         return TextUtils.isEmpty(editText.getText().toString());
     }
 
+    public String getInputText(){
+        if(!isInputEmpty()){
+            return editText.getText().toString();
+        }
+
+        throw new NullPointerException("EditText don't have data");
+    }
+
     @Override
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
